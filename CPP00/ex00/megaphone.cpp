@@ -14,12 +14,14 @@ int main(int ac, char **av)
 			j = 0;
 			while(av[i][j])
 			{
-				if (av[i][j] >= 'a' && av[i][j] <= 'z')
-					av[i][j] -= 32;
 				c = av[i][j];
+				if (c >= 'a' && c <= 'z')
+					c -= 32;
 				std::cout << c ;
 				j++;
 			}
+			if (i != ac - 1)
+				std::cout << ' ';
 			i++;
 		}
 	std::cout << "\n" ;
