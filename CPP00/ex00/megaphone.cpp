@@ -24,7 +24,7 @@ int main(int ac, char **av)
 				std::cout << ' ';
 			i++;
 		}
-	std::cout << "\n" ;
+		std::cout << "\n" ;
 	}
 	else
 		std::cout << "* LOUD AND UNBEARABLE FEEDBACK NOISE *" << std::endl;
