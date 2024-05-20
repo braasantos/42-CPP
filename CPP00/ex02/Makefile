@@ -1,5 +1,5 @@
 NAME = account
-SRC = Account.cpp
+SRC = Account.cpp tests.cpp
 CPP = g++
 CFLAGS = -Wall -Werror -Wextra -std=c++98
 COMPILER = $(CPP) $(CFLAGS)

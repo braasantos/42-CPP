@@ -1,4 +1,5 @@
 #include "phonebook.hpp"
+#include "contacts.hpp"
 
 void header(void)
 {
@@ -32,14 +33,14 @@ int main(void)
 		if (line == "ADD" || line == "add")
 		{
 			system("clear");
-			contacts(contact);
+			contact.contacts();
 			phonebook.add_contact(contact);
 			header();
 		}
 		if (line == "SEARCH" || line == "search")
 		{
 			system("clear");
-			show_phonebook(phonebook);
+			phonebook.show_phonebook();
 			header();
 		}
 	}

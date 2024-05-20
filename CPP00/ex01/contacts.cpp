@@ -1,25 +1,69 @@
 #include "phonebook.hpp"
+#include "contacts.hpp"
 
-void set_firstname(Contact& contact)
+
+void Contact::set_first(std::string input)
 {
-	std::string name;
-	std::getline(std::cin, name);
-	contact.set_first(name);
+    firstname = input;
 }
-void set_lastname(Contact& contact)
+void Contact::set_last(std::string input)
 {
-	std::string name;
-	std::getline(std::cin, name);
-	contact.set_last(name);
+    lastname = input;
 }
-void set_nickname(Contact& contact)
+void Contact::set_nick(std::string input)
 {
-	std::string name;
-	std::getline(std::cin, name);
-	contact.set_nick(name);
+    nickname = input;
+}
+void Contact::set_phone(std::string input)
+{
+    phonenumber = input;
+}
+void Contact::set_daskest(std::string input)
+{
+    darkestsecret = input;
+}
+std::string Contact::get_firstname(void) const
+{
+	return firstname;
+}
+std::string Contact::get_lastname(void) const
+{
+    return lastname;
+}
+std::string Contact::get_nickname(void) const
+{
+    return nickname;
+}
+std::string Contact::get_phonenumber(void) const
+{
+    return phonenumber;
+}
+std::string Contact::get_darkest(void) const
+{
+    return darkestsecret;
 }
 
-int check_number(std::string input)
+
+void Contact::set_firstname(void)
+{
+	std::string name;
+	std::getline(std::cin, name);
+	set_first(name);
+}
+void Contact::set_lastname(void)
+{
+	std::string name;
+	std::getline(std::cin, name);
+	set_last(name);
+}
+void Contact::set_nickname(void)
+{
+	std::string name;
+	std::getline(std::cin, name);
+	set_nick(name);
+}
+
+int Contact::check_number(std::string input)
 {
 	for(size_t i = 0; i < input.length(); i++)
 	{
@@ -28,7 +72,7 @@ int check_number(std::string input)
 	}
 	return (0);
 }
-void set_phonenumber(Contact& contact)
+void Contact::set_phonenumber(void)
 {
 	std::string number;
 	while(1)
@@ -38,37 +82,37 @@ void set_phonenumber(Contact& contact)
 			std::cout << "Please enter a valid number.\n";
 		else
 		{
-			contact.set_phone(number);
+			set_phone(number);
 			break;
 		}
 	}
 }
-void set_darkestsecret(Contact& contact)
+void Contact::set_darkestsecret(void)
 {
 	std::string name;
 	std::getline(std::cin, name);
-	contact.set_daskest(name);
+	set_daskest(name);
 }
 
-void contacts(Contact& contact)
+void Contact::contacts(void)
 {
 	std::cout << "- Type the info of the contact please\n";
 	std::cout << "- First Name: \n";
-	set_firstname(contact);
+	set_firstname();
 	std::cout << "- Last Name:\n";
-	set_lastname(contact);
+	set_lastname();
 	std::cout << "- Nickname:\n";
-	set_nickname(contact);
+	set_nickname();
 	std::cout << "- Phone Number:\n";
-	set_phonenumber(contact);
+	set_phonenumber();
 	std::cout << "- Darkest Secret: \n";
-	set_darkestsecret(contact);
+	set_darkestsecret();
 	std::cout << "- Done adding everything, Well done ( ˶˘ ³˘(˵ ͡° ͜ʖ ͡°˵)♡ \n";
 }
 
-int display_contacts(Phonebook& phone, int index)
+int Phonebook::display_contacts(int index)
 {
-	Contact& contact = phone.get_contact(index);
+	Contact& contact = get_contact(index);
 	std::cout << "First Name:     " << contact.get_firstname() << "\n";
 	std::cout << "Last Name:      " << contact.get_lastname() << "\n";
 	std::cout << "Nick Name:      " << contact.get_nickname() << "\n";
