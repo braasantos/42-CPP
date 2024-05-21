@@ -1,5 +1,5 @@
-NAME = phonebook
-SRC = main.cpp Contacts.cpp Phonebook.cpp
+NAME = zombie
+SRC = main.cpp newZombie.cpp randomChump.cpp Zombie.cpp
 CPP = c++
 CFLAGS = -Wall -Werror -Wextra -std=c++98
 COMPILER = $(CPP) $(CFLAGS)
