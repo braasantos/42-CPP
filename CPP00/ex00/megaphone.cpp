@@ -2,27 +2,21 @@
 
 int main(int ac, char **av)
 {
-	int i;
-	int j;
 	char c;
 
 	if (ac > 1)
 	{
-		i = 1;
-		while (av[i])
+		for (int i = 1; av[i]; i++)
 		{
-			j = 0;
-			while(av[i][j])
+			for(int j = 0; av[i][j]; j++)
 			{
 				c = av[i][j];
 				if (c >= 'a' && c <= 'z')
 					c -= 32;
 				std::cout << c ;
-				j++;
 			}
 			if (i != ac - 1)
 				std::cout << ' ';
-			i++;
 		}
 		std::cout << "\n" ;
 	}

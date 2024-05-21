@@ -1,6 +1,5 @@
-#include "phonebook.hpp"
-#include "contacts.hpp"
-
+#include "Phonebook.hpp"
+#include "Contacts.hpp"
 
 void Contact::set_first(std::string input)
 {
@@ -43,24 +42,59 @@ std::string Contact::get_darkest(void) const
     return darkestsecret;
 }
 
-
 void Contact::set_firstname(void)
 {
 	std::string name;
-	std::getline(std::cin, name);
-	set_first(name);
+	while(1)
+	{
+		std::getline(std::cin, name);
+		if (name.length() == 0)
+		{
+			std::cout << "Please enter a valid Firstname\n";
+			continue;
+		}
+		else
+		{
+			set_first(name);
+			break;
+		}
+	}
 }
 void Contact::set_lastname(void)
 {
 	std::string name;
-	std::getline(std::cin, name);
-	set_last(name);
+	while(1)
+	{
+		std::getline(std::cin, name);
+		if (name.length() == 0)
+		{
+			std::cout << "Please enter a valid Lastname\n";
+			continue;
+		}
+		else
+		{
+			set_last(name);
+			break;
+		}
+	}
 }
 void Contact::set_nickname(void)
 {
 	std::string name;
-	std::getline(std::cin, name);
-	set_nick(name);
+	while(1)
+	{
+		std::getline(std::cin, name);
+		if (name.length() == 0)
+		{
+			std::cout << "Please enter a valid Nickname\n";
+			continue;
+		}
+		else
+		{
+			set_nick(name);
+			break;
+		}
+	}
 }
 
 int Contact::check_number(std::string input)
@@ -78,7 +112,7 @@ void Contact::set_phonenumber(void)
 	while(1)
 	{
 		std::getline(std::cin, number);
-		if (check_number(number))
+		if (check_number(number) || number.length() == 0)
 			std::cout << "Please enter a valid number.\n";
 		else
 		{
@@ -89,9 +123,21 @@ void Contact::set_phonenumber(void)
 }
 void Contact::set_darkestsecret(void)
 {
-	std::string name;
-	std::getline(std::cin, name);
-	set_daskest(name);
+		std::string name;
+	while(1)
+	{
+		std::getline(std::cin, name);
+		if (name.length() == 0)
+		{
+			std::cout << "Please enter a valid Nickname\n";
+			continue;
+		}
+		else
+		{
+			set_daskest(name);
+			break;
+		}
+	}
 }
 
 void Contact::contacts(void)

@@ -1,5 +1,5 @@
-#include "phonebook.hpp"
-#include "contacts.hpp"
+#include "Phonebook.hpp"
+#include "Contacts.hpp"
 
 int Phonebook::is_digit(int c)
 {
@@ -53,7 +53,9 @@ void Phonebook::add_contact(Contact new_contact)
     }
     else
     {
-        contacts[7] = new_contact;
+		int oldIndex = 0;
+        contacts[oldIndex] = new_contact;
+		oldIndex++;
         std::cout << "Contact added successfully by replacing the last one!\n";
     }
 }
@@ -77,8 +79,10 @@ int Phonebook::newheader(void)
 	std::cout << "\n";
 	std::cout << "If you want to go back to Main \n";
 	std::cout << "Please type 'BACK' or 'back' \n";
-	std::cout << "Or please press 'ENTER' to choose a new index to see another contact\n";
+	std::cout << "Or please press any key to go back to the seletion option\n";
 	std::getline(std::cin, line);
+	// if (std::cin.eof())
+	// 	exit(0);
 	if (line == "BACK" || line == "back")
 		return 1;
 	return 0;
@@ -93,7 +97,7 @@ void Phonebook::phonebook_header(void)
 		std::cout << "-Please choose an index to see the full info ＼(｀0´)／\n";
 		std::getline(std::cin, line);
 		index = stoi(line);
-		if(!not_a_digit(line))
+		if(!not_a_digit(line) || line.length() == 0)
 		{
 			utils();
 			continue;
@@ -125,7 +129,10 @@ void Phonebook::show_phonebook(void)
 	int n_contacts = get_ncontacts();
 	if (n_contacts == 0)
 	{
-		std::cout << "You have no contacts at the moment (⋟﹏⋞) \n";
+		std::cout << "\n";
+		std::cout << "		You have no contacts at the moment (⋟﹏⋞) \n";
+		std::cout << "\n";
+		std::cout << "\n";
 		return;
 	}
 	std::cout << "Your contacts:\n";

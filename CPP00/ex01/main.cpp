@@ -1,5 +1,5 @@
-#include "phonebook.hpp"
-#include "contacts.hpp"
+#include "Phonebook.hpp"
+#include "Contacts.hpp"
 
 void header(void)
 {
@@ -30,18 +30,26 @@ int main(void)
 			std::cout << "Goodbye  ٩(◕‿◕)۶ \n" ;
 			break;
 		}
-		if (line == "ADD" || line == "add")
+		else if (line == "ADD" || line == "add")
 		{
 			system("clear");
 			contact.contacts();
 			phonebook.add_contact(contact);
 			header();
 		}
-		if (line == "SEARCH" || line == "search")
+		else if (line == "SEARCH" || line == "search")
 		{
 			system("clear");
 			phonebook.show_phonebook();
 			header();
+		}
+		else
+		{
+			std::cout << "Not a valid option\n";
+			std::cout << "PLEASE TYPE ONE OF THE THE 3 OPTIONS\n";
+			std::cout << "1 - 'ADD' to add a new contact to the phonebook\n";
+			std::cout << "2 - 'SEARCH' to search a contact on the phonebook\n";
+			std::cout << "3 - 'EXIT' self-explanatory\n";
 		}
 	}
 }
