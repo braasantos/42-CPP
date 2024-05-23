@@ -1,5 +1,4 @@
-#ifndef PHONE_BOOK_H
-# define PHONE_BOOK_H
+#pragma once
 
 #include "Contacts.hpp"
 # include <iostream>
@@ -30,5 +29,3 @@ public:
     void utils(void);
     int newheader(void);
 };
-
-#endif

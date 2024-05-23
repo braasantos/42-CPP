@@ -1,5 +1,4 @@
-#ifndef ZOMBIE_H
-# define ZOMBIE_H
+#pragma once
 
 #include <iostream>
 
@@ -18,4 +17,3 @@ public:
     void set_name(std::string input);
     void announce(void);
 };
-#endif

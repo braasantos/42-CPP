@@ -1,5 +1,4 @@
-#ifndef CONTACTS_H
-# define CONTACTS_H
+#pragma once
 
 #include "Phonebook.hpp"
 # include <iostream>
@@ -39,4 +38,3 @@ public:
     void set_phonenumber(void);
     void set_darkestsecret(void);
 };
-#endif

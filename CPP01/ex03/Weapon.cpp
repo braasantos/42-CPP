@@ -11,10 +11,11 @@ void Weapon::setType(std::string input)
 
 Weapon::Weapon(std::string name)
 {
+    setType(name);
     std::cout << std::endl << "Weapon created: " << name << std::endl;
 }
 Weapon::~Weapon()
 {
-    std::cout << std::endl << "Weapon " << this->type << " cleaned." << std::endl;
+    std::cout << std::endl << "Weapon: " << this->type << " cleaned." << std::endl;
 }
 Weapon::Weapon(){}

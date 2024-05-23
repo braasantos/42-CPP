@@ -3,15 +3,19 @@
 void HumanB::attack(void)
 {
     if (!this->weapon)
-        std::cout << this->name << " attacks with their hands" << std::endl;
+        std::cout << BLUE << this->name  << RESET << " attacks with their hands" << std::endl;
     else
-        std::cout << this->name << " attacks with their " << this->weapon->getType() << std::endl;
+        std::cout << BLUE << this->name << RESET << " attacks with their " << RED << this->weapon->getType() << RESET << std::endl;
 }
-HumanB::HumanB(std::string name)
+HumanB::HumanB(std::string name): name(name), weapon(NULL)
 {
-    std::cout << "HumanB: " << name << " initialized with no weapon" << std::endl << std::endl;
+    set_name(name);
+    std::cout << "HumanB: " << BLUE << name << RESET << " initialized with no weapon" << std::endl << std::endl;
 }
-HumanB::~HumanB(void){}
+HumanB::~HumanB(void)
+{
+    std::cout << "HumanB "<< BLUE << this->name << RESET << " died :(\n";
+}
 
 void HumanB::set_name(std::string input)
 {

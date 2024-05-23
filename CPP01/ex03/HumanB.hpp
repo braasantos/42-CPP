@@ -1,9 +1,12 @@
-#ifndef HUMANB_HPP
-# define HUMANB_HPP
+#pragma once
 
 #include <string>
 #include <iostream>
 #include "Weapon.hpp"
+
+#define RED "\033[31m"
+#define BLUE "\033[34m"
+#define RESET "\033[0m"
 
 class HumanB
 {
@@ -17,4 +20,3 @@ public:
     void set_name(std::string input);
     void setWeapon(Weapon& weapon);
 };
-#endif

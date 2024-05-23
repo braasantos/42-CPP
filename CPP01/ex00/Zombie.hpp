@@ -1,5 +1,4 @@
-#ifndef ZOMBIE_CPP
-#define ZOMBIE_CPP
+#pragma once
 
 # include <iostream>
 # include <string>
@@ -14,4 +13,3 @@ public:
     ~Zombie( void );
     void announce( void );
 };
-#endif
