@@ -1,5 +1,5 @@
-NAME = replace
-SRC = main.cpp utils.cpp
+NAME = fixed
+SRC = main.cpp Fixed.cpp
 OBJS_DIR = objs/
 OBJ = $(addprefix $(OBJS_DIR), $(SRC:.cpp=.o))
 CPP = c++
@@ -18,7 +18,7 @@ $(OBJS_DIR):
 
 $(OBJS_DIR)%.o: %.cpp
 	@echo "Compiling $<"
-	@mkdir -p $(OBJS_DIR)
+	mkdir -p $(OBJS_DIR)
 	$(COMPILER) -c $< -o $@
 
 clean:
@@ -31,3 +31,4 @@ fclean: clean
 re: fclean all
 
 .PHONY: all clean fclean re
+

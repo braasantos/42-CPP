@@ -9,6 +9,8 @@ void HumanB::attack(void)
 }
 HumanB::HumanB(std::string name): name(name), weapon(NULL)
 {
+    // this->name = name;
+    // this->weapon = NULL;
     set_name(name);
     std::cout << "HumanB: " << BLUE << name << RESET << " initialized with no weapon" << std::endl << std::endl;
 }

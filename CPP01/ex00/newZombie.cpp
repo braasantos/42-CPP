@@ -7,7 +7,7 @@ Zombie* newZombie(std::string name)
         Zombie *newZombie = new Zombie(name);
         return newZombie;
     }
-    catch(std::bad_alloc e)
+    catch(std::bad_alloc &e)
     {
         std::cerr << e.what() << '\n';
     }

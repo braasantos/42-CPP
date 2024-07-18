@@ -7,30 +7,18 @@ int main(int ac, char **av)
         switch (getCommand(av[1]))
         {
             case  DEBUG:
-            {
                 debug();
-                break;
-            }
             case INFO:
-            {
                 info();
-                break;
-            }
             case WARNING:
-            {
                 warning();
-                break;
-            }
             case ERROR:
             {
                 error();
                 break;
             }
             case INVALID:
-            {
                 invalid();
-                break;
-            }
         }
     }
     else

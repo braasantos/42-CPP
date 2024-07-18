@@ -156,7 +156,7 @@ void Contact::contacts(void)
 	std::cout << "- Done adding everything, Well done ( ˶˘ ³˘(˵ ͡° ͜ʖ ͡°˵)♡ \n";
 }
 
-int Phonebook::display_contacts(int index)
+int PhoneBook::display_contacts(int index)
 {
 	Contact& contact = get_contact(index);
 	std::cout << "First Name:     " << contact.get_firstname() << "\n";

@@ -5,7 +5,7 @@ Zombie* zombieHorde( int N, std::string name );
 int main(void)
 {
     Zombie *newzombie;
-    int n = 18;
+    int n = 5;
     newzombie = zombieHorde(n, "Batman");
     if (newzombie == NULL)
         return 0;

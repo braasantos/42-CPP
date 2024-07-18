@@ -8,16 +8,31 @@ Harl::~Harl()
 }
 void Harl::complain(std::string level)
 {
-    if (level == "debug")
-        debug();
-    else if (level == "info")
-        info();
-    else if (level == "warning")
-        warning();
-    else if (level == "error")
-        error();
-    else
-        std::cout << "Unknown level" << std::endl;
+    for (size_t i = 0; i < level.size(); i++)
+        level[i] = toupper(level[i]);
+
+    void (Harl::*funcptr[4])(void) =
+    { 
+        &Harl::debug, 
+        &Harl::info, 
+        &Harl::warning, 
+        &Harl::error 
+    };
+
+    std::string levels[4] =
+    { 
+        "DEBUG", 
+        "INFO", 
+        "WARNING", 
+        "ERROR" 
+    };
+    
+    for(int i = 0; funcptr[i]; i++)
+    {
+        if (levels[i] == level)
+            (this->*funcptr[i])();
+    }
+
 }
 void Harl::debug(void)
 {
@@ -45,3 +60,10 @@ void Harl::error(void)
     std::cout << RED "ERROR: " RESET;
     std::cout << "This is unacceptable! I want to speak to the manager now." << std::endl;
 }
+
+
+// Function pointers in C++ provide a mechanism to 
+// store and invoke functions dynamically at runtime. 
+// They are particularly useful for scenarios where 
+// the specific 
+// function to be called is determined dynamically

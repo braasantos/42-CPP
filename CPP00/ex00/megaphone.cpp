@@ -1,24 +1,22 @@
 #include <iostream>
 
+std::string capitalize(std::string str)
+{
+	for (unsigned int i = 0; i < str.length(); i++)
+	{
+		if (std::isalpha(str[i]))
+			str[i] = std::toupper(str[i]);
+	}
+	return str;
+}
+
 int main(int ac, char **av)
 {
-	char c;
-
 	if (ac > 1)
 	{
 		for (int i = 1; av[i]; i++)
-		{
-			for(int j = 0; av[i][j]; j++)
-			{
-				c = av[i][j];
-				if (c >= 'a' && c <= 'z')
-					c -= 32;
-				std::cout << c ;
-			}
-			if (i != ac - 1)
-				std::cout << ' ';
-		}
-		std::cout << "\n" ;
+			std::cout << capitalize(av[i]);
+		std::cout << std::endl;
 	}
 	else
 		std::cout << "* LOUD AND UNBEARABLE FEEDBACK NOISE *" << std::endl;

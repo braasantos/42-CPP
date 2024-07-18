@@ -10,13 +10,13 @@
 # include <iomanip>
 #include <cstdlib>
 
-class Phonebook
+class PhoneBook
 {
 private:
 	Contact contacts[8];
 	int n_contacts;
 public:
-	Phonebook() : n_contacts(0) {};
+	PhoneBook() : n_contacts(0) {};
     int get_ncontacts() const;
     void add_contact(Contact new_contact);
     Contact& get_contact(int index);

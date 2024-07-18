@@ -22,7 +22,7 @@ int main(void)
 	header();
 	std::string line;
 	Contact contact;
-	Phonebook phonebook; // new instance of the phonebook class
+	PhoneBook phonebook; // new instance of the phonebook class
 	while(std::getline(std::cin, line))
 	{
 		if (line == "EXIT" || line == "exit")

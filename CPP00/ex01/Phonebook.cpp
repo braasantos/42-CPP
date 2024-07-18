@@ -1,7 +1,7 @@
 #include "Phonebook.hpp"
 #include "Contacts.hpp"
 
-int Phonebook::is_digit(int c)
+int PhoneBook::is_digit(int c)
 {
 	if (c >= 48 && c <= 57)
 	{
@@ -10,7 +10,7 @@ int Phonebook::is_digit(int c)
 	return (0);
 }
 
-int	Phonebook::not_a_digit(std::string input)
+int	PhoneBook::not_a_digit(std::string input)
 {
 	for(int i = 0; input[i]; i++)
 	{
@@ -20,7 +20,7 @@ int	Phonebook::not_a_digit(std::string input)
 	return 1;
 }
 
-int	Phonebook::stoi(std::string input)
+int	PhoneBook::stoi(std::string input)
 {
 	int	i;
 	int	num;
@@ -36,12 +36,12 @@ int	Phonebook::stoi(std::string input)
 	return (num);
 }
 
-Contact& Phonebook::get_contact(int index)
+Contact& PhoneBook::get_contact(int index)
 {
     return contacts[index];
 }
 
-void Phonebook::add_contact(Contact new_contact)
+void PhoneBook::add_contact(Contact new_contact)
 {
     if (n_contacts < 8)
     {
@@ -49,7 +49,7 @@ void Phonebook::add_contact(Contact new_contact)
         if (n_contacts < 8)
             n_contacts++;
         else
-            std::cout << "Phonebook is full. Replacing the last contact.\n";
+            std::cout << "PhoneBook is full. Replacing the last contact.\n";
     }
     else
     {
@@ -60,19 +60,19 @@ void Phonebook::add_contact(Contact new_contact)
     }
 }
 
-int Phonebook::get_ncontacts() const
+int PhoneBook::get_ncontacts() const
 {
     return n_contacts;
 }
 
-void Phonebook::utils(void)
+void PhoneBook::utils(void)
 {
 	std::cout << "Not a valid index. \n";
 	std::cout << "( ͡ಥ ͜ʖ ͡ಥ)\n";
 	std::cout << "Please try a number between 0 and " << get_ncontacts() - 1 << "\n";
 }
 
-int Phonebook::newheader(void)
+int PhoneBook::newheader(void)
 {
 	std::string line;
 	std::cout << "\n";
@@ -87,7 +87,7 @@ int Phonebook::newheader(void)
 		return 1;
 	return 0;
 }
-void Phonebook::phonebook_header(void)
+void PhoneBook::phonebook_header(void)
 {
 	while (1)
 	{
@@ -121,10 +121,10 @@ std::string truncate_string(const std::string& str, size_t width)
 	if (str.length() <= width)
 		return str;
 	else
-		return str.substr(0, width - 1) + ".";
+		return str.substr(0, width - 2) + ".";
 }
 
-void Phonebook::show_phonebook(void)
+void PhoneBook::show_phonebook(void)
 {
 	int n_contacts = get_ncontacts();
 	if (n_contacts == 0)
@@ -136,14 +136,27 @@ void Phonebook::show_phonebook(void)
 		return;
 	}
 	std::cout << "Your contacts:\n";
-	std::cout << "|" << std::setw(10) << "Index|" << std::setw(10) << " First Name|" << std::setw(10) << " Last Name|" << std::setw(10) << "  Nickname|\n";
+	std::cout << "|";
+	std::cout << std::setw(10) << "Index";
+	std::cout << "|";
+	std::cout << std::setw(10) << "First Name";
+	std::cout << "|";
+	std::cout << std::setw(10) << "Last Name";
+	std::cout << "|";
+	std::cout << std::setw(10) << "Nickname";
+	std::cout << "|\n";
 	for (int i = 0; i < n_contacts; ++i)
 	{
 		Contact& contact = get_contact(i);
-		std::cout << "|" << std::setw(9) << i << "| ";
-		std::cout << std::setw(10) << truncate_string(contact.get_firstname(), 10) << "|";
-		std::cout << std::setw(10) << truncate_string(contact.get_lastname(), 10) << "|";
-		std::cout << std::setw(10) << truncate_string(contact.get_nickname(), 10) << "|\n";
+		std::cout << "|";
+		std::cout << std::right << std::setw(10) << i;
+		std::cout << "|";
+		std::cout << std::right << std::setw(10) << truncate_string(contact.get_firstname(), 10);
+		std::cout << "|";
+		std::cout << std::right << std::setw(10) << truncate_string(contact.get_lastname(), 10);
+		std::cout << "|";
+		std::cout << std::right << std::setw(10) << truncate_string(contact.get_nickname(), 10);
+		std::cout << "|\n";
 	}
 	phonebook_header();
 }
