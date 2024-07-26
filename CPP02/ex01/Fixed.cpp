@@ -7,7 +7,7 @@ Fixed::Fixed() : _fixedPoint(0)
 Fixed::Fixed(const int value)
 {
     std::cout << "Int constructor called\n";
-    this->_fixedPoint = value * (1 << _fractBits);
+    this->_fixedPoint = value << _fractBits;
 }
 Fixed::Fixed(const float value)
 {
@@ -56,5 +56,5 @@ int Fixed::getRawBits() const
 
 void Fixed::setRawBits(int const raw)
 {
-    std::cout << raw << std::endl;
+    this->_fixedPoint = raw;
 }
