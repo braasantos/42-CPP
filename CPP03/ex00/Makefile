@@ -1,5 +1,5 @@
-NAME = fixed
-SRC = main.cpp Fixed.cpp Point.cpp bsp.cpp
+NAME = clapptrapp
+SRC = main.cpp ClapTrap.cpp
 OBJS_DIR = objs/
 OBJ = $(addprefix $(OBJS_DIR), $(SRC:.cpp=.o))
 CPP = c++

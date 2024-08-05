@@ -1,10 +1,11 @@
-#ifndef  FIXED_HPP
-# define FIXED_HPP
+#pragma once
 
 # include <iostream>
 # include <string>
 # include <cmath>
 
+//Essentially, operator overloading allows you to define 
+//how operators behave when applied to objects of your class.
 
 class Fixed
 {
@@ -23,7 +24,27 @@ class Fixed
         float toFloat(void) const;
         int toInt(void) const;
 
+        bool operator > (const Fixed& other) const;
+        bool operator < (const Fixed& other) const;
+        bool operator == (const Fixed& other) const;
+        bool operator <= (const Fixed& other) const;
+        bool operator >= (const Fixed& other) const;
+        bool operator != (const Fixed& other) const;
+
+        Fixed operator + (const Fixed& other) const;
+        Fixed operator - (const Fixed& other) const;
+        Fixed operator * (const Fixed& other) const;
+        Fixed operator / (const Fixed& other) const;
+
+        Fixed& operator++();
+        Fixed operator++(int);
+        Fixed& operator--();
+        Fixed operator--(int);
+
+        static Fixed &min(Fixed &fixedPoint1, Fixed &fixedPoint2);
+        static const Fixed &min(const Fixed &fixedPoint1, const Fixed &fixedPoint2);
+        static Fixed &max(Fixed &fixedPoint1, Fixed &fixedPoint2);
+        static const Fixed &max(const Fixed &fixedPoint1, const Fixed &fixedPoint2);
 };
 
 std::ostream& operator << (std::ostream& out, Fixed const &obj);
-#endif
