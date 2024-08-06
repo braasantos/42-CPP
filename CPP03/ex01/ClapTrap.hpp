@@ -4,9 +4,10 @@
 #define RED "\033[31m"
 #define BLUE "\033[34m"
 #define RESET "\033[0m"
+
 class ClapTrap
 {
-    private:
+    protected:
         std::string _name;
         int _hitPoints;
         int _enePoints;

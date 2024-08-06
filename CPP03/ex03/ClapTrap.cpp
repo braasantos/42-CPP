@@ -19,7 +19,7 @@ int ClapTrap::get_attDam(void)
 
 ClapTrap::ClapTrap() : _hitPoints(10), _enePoints(10), _attDamage(0)
 {
-    std::cout << BLUE << "ClapTrap " << RESET << "Constructor was created" << std::endl;
+    std::cout << BLUE << "ClapTrap " << RESET <<  "Constructor was created" << std::endl;
 }
 ClapTrap::ClapTrap(std::string name) : _name(name), _hitPoints(10), _enePoints(10), _attDamage(0)
 {
