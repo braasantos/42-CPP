@@ -1,5 +1,11 @@
 #include "Fixed.hpp"
 
+
+//Fixed-point arithmetic is a way of representing fractional 
+//numbers without using floating-point hardware, making it useful 
+//in some performance-critical applications
+
+
 Fixed::Fixed() : _fixedPoint(0)
 {
     std::cout << "Default constructor called\n";
@@ -9,6 +15,11 @@ Fixed::Fixed(const int value)
     std::cout << "Int constructor called\n";
     this->_fixedPoint = value << _fractBits;
 }
+/// @brief          This constructor allows you to create 
+//                  a Fixed object from a float value.
+//          shifts the value by the fractbits to the left
+//          Each left shift by 1 position is equivalent to multiplying the number by 2.
+/// @param value    the value to create the object
 Fixed::Fixed(const float value)
 {
     std::cout << "Float constructor called\n";
@@ -28,6 +39,10 @@ Fixed::Fixed(const Fixed& otherClass) : _fixedPoint(otherClass._fixedPoint)
 {
     std::cout << "Copy constructor called\n";
 }
+/// @brief          Allows Fixed objects to be printed using std::cout
+/// @param out 
+/// @param obj 
+/// @return 
 std::ostream& operator << (std::ostream& out, const Fixed& obj)
 {
     float value = obj.toFloat();

@@ -15,7 +15,8 @@ int main(void)
             // clapp.beRepaired(1);
     }
     trapp.attack("hugo");
-
+    trapp.whoAmI();
+    clapp.whoAmI();
     // trapp.takeDamage(10);
     // clapp.attack("braulio");
     // clapp.takeDamage(10);

@@ -4,6 +4,9 @@ DiamondTrap::DiamondTrap()
 {
     std::cout << BRIGHT_YELLOW << "DiamondTrap " << RESET << " Default constructor was called" << std::endl;
     this->ClapTrap::_name = this->_name + "_clap_name";
+    this->_hitPoints = FragTrap::_hitPoints;
+    this->_enePoints = ScavTrap::_enePoints;
+    this->_attDamage = FragTrap::_attDamage;
 }
 DiamondTrap::DiamondTrap(std::string name): ClapTrap(name), FragTrap(name), ScavTrap(name)
 {
@@ -13,7 +16,6 @@ DiamondTrap::DiamondTrap(std::string name): ClapTrap(name), FragTrap(name), Scav
     this->_hitPoints = FragTrap::_hitPoints;
     this->_enePoints = ScavTrap::_enePoints;
     this->_attDamage = FragTrap::_attDamage;
-
 }
 DiamondTrap::~DiamondTrap()
 {
@@ -36,5 +38,5 @@ DiamondTrap& DiamondTrap::operator=(const DiamondTrap& other)
 
 void DiamondTrap::whoAmI()
 {
-    std::cout << BRIGHT_YELLOW << "DiamondTrap " << RESET "is called " << this->_name << BLUE << "ClapTrap " << RESET "is called " << ClapTrap::_name << std::endl;
+    std::cout << BRIGHT_YELLOW << "DiamondTrap " << RESET "is called " << this->_name << BLUE << " ClapTrap " << RESET "is called " << ClapTrap::_name << std::endl;
 }

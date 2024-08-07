@@ -50,7 +50,7 @@ Fixed& Fixed::operator=(const Fixed& other)
 
 int Fixed::getRawBits() const
 {
-    // std::cout << "getRawBits member function called\n";
+    std::cout << "getRawBits member function called\n";
     return this->_fixedPoint;
 }
 
@@ -123,26 +123,6 @@ Fixed Fixed::operator--(int)
     _fixedPoint--;
     return tmp;
 }
-
-// Fixed& Fixed::min(Fixed& fixedPoint1, Fixed& fixedPoint2)
-// {
-//     return (fixedPoint1.getRawBits() < fixedPoint2.getRawBits()) ? fixedPoint1 : fixedPoint2;
-// }
-
-// const Fixed& Fixed::min(const Fixed& fixedPoint1, const Fixed& fixedPoint2)
-// {
-//     return (fixedPoint1.getRawBits() < fixedPoint2.getRawBits()) ? fixedPoint1 : fixedPoint2;
-// }
-
-// Fixed& Fixed::max(Fixed& fixedPoint1, Fixed& fixedPoint2)
-// {
-//     return (fixedPoint1.getRawBits() > fixedPoint2.getRawBits()) ? fixedPoint1 : fixedPoint2;
-// }
-
-// const Fixed& Fixed::max(const Fixed& fixedPoint1, const Fixed& fixedPoint2)
-// {
-//      return (fixedPoint1.getRawBits() > fixedPoint2.getRawBits()) ? fixedPoint1 : fixedPoint2;
-// }
 
 Fixed& Fixed::min(Fixed& fixedPoint1, Fixed& fixedPoint2)
 {

@@ -8,11 +8,14 @@ int main( void )
     Point c(0, 10);
     Point point(5, 5);
 
-    if (bsp(a, b, c, point)) {
+    if (bsp(a, b, c, point))
         std::cout << "Point is inside the triangle" << std::endl;
-    } else {
+    else
         std::cout << "Point is outside the triangle" << std::endl;
-    }
 
+    if (bsp(a, c, point, b))
+        std::cout << "Point is inside the triangle" << std::endl;
+    else
+        std::cout << "Point is outside the triangle" << std::endl;
     return 0;
 }

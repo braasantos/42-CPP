@@ -41,6 +41,8 @@ bool bsp( Point const a, Point const b, Point const c, Point const point)
     Fixed areaPBC = area(point, b, c);
     Fixed areaPCA = area(point, c, a);
 
+     if (areaPAB.getRawBits() == 0 || areaPBC.getRawBits() == 0 || areaPCA.getRawBits() == 0)
+        return (false);
     // if the point is inside the triangle that means that the sub-areas will be
     // equal to the principal area and if not the sub-areas will be greater than
     // the principal
