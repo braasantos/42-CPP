@@ -1,5 +1,5 @@
-NAME = fixed
-SRC = Fixed.cpp main.cpp
+NAME = animals
+SRC = main.cpp Animal.cpp Dog.cpp Cat.cpp
 OBJS_DIR = objs/
 OBJ = $(addprefix $(OBJS_DIR), $(SRC:.cpp=.o))
 CPP = c++

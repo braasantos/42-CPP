@@ -10,7 +10,7 @@ Cat::Cat(std::string name) :type(name)
 }
 Cat::~Cat()
 {
-    std::cout << this->type << " ran away 🐾" << std::endl;
+    std::cout << this->type << "ran away 🐾" << std::endl;
 }
 Cat::Cat(const Cat& otherClass) : type(otherClass.type)
 {

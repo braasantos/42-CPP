@@ -2,10 +2,11 @@
 
 #include <iostream>
 #include "Animal.hpp"
+#include "Brain.hpp"
 
 class Cat : public Animal
 {
-    protected:
+    private:
         std::string type;
     public:
         Cat();

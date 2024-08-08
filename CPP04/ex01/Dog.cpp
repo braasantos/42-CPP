@@ -10,7 +10,7 @@ Dog::Dog(std::string name) :type(name)
 }
 Dog::~Dog()
 {
-    std::cout << this->type << " ran away 🐾" << std::endl;
+    std::cout << this->type << "ran away 🐾" << std::endl;
 }
 Dog::Dog(const Dog& otherClass) : type(otherClass.type)
 {

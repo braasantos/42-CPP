@@ -21,6 +21,15 @@ Point &Point::operator=(const Point& other)
 Point::~Point()
 {
 }
+bool Point::operator == (const Point& other) const
+{
+    if (this->getX() == other.getX())
+        return true;
+    else if (this->getY() == other.getY())
+        return true;
+    else
+        return false;
+}
 
 void Point::setX(const Fixed &value)
 {

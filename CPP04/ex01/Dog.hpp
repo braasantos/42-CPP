@@ -1,11 +1,12 @@
 #pragma once
 
 #include "Animal.hpp"
+#include "Brain.hpp"
 #include <iostream>
 
 class Dog : public Animal
 {
-    protected:
+    private:
         std::string type;
     public:
         Dog();

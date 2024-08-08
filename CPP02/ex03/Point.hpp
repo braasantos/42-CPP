@@ -17,6 +17,7 @@ class Point
         void setY(const Fixed &value);
         Fixed getX(void) const;
         Fixed getY(void) const;
+        bool operator == (const Point& other) const;
 
 };
 
