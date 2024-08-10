@@ -3,8 +3,8 @@
 ScavTrap::ScavTrap() : ClapTrap()
 {
     _hitPoints= 100;
-    _enePoints = 50;
-    _attDamage = 20;
+    _energyPoints = 50;
+    _attackDamage = 20;
     std::cout << RED << "ScavTrap " << RESET << "Default Constructor was called" << std::endl;
 }
 
@@ -12,8 +12,8 @@ ScavTrap::ScavTrap(std::string name) : ClapTrap(name)
 {
     std::cout << RED << "ScavTrap " << RESET << " has been created" << std::endl;
     _hitPoints= 100;
-    _enePoints = 50;
-    _attDamage = 20;
+    _energyPoints = 50;
+    _attackDamage = 20;
 }
 ScavTrap::~ScavTrap()
 {
@@ -23,8 +23,8 @@ ScavTrap::ScavTrap(const ScavTrap& otherClass)
 {
     this->_name = otherClass._name;
     this->_hitPoints = otherClass._hitPoints;
-    this->_enePoints = otherClass._enePoints;
-    this->_attDamage = otherClass._attDamage;
+    this->_energyPoints = otherClass._energyPoints;
+    this->_attackDamage = otherClass._attackDamage;
 }
 ScavTrap& ScavTrap::operator=(const ScavTrap& other)
 {
@@ -32,8 +32,8 @@ ScavTrap& ScavTrap::operator=(const ScavTrap& other)
     {
         this->_name = other._name;
         this->_hitPoints = other._hitPoints;
-        this->_enePoints = other._enePoints;
-        this->_attDamage = other._attDamage;
+        this->_energyPoints = other._energyPoints;
+        this->_attackDamage = other._attackDamage;
     }
     return *this;
 }
@@ -57,7 +57,7 @@ void ScavTrap::attack(const std::string& target)
         return ;
     else
         std::cout << RED << "ScavTrap " << RESET << this->_name << " attacks " << target << std::endl;
-    this->_enePoints--;
+    this->_energyPoints--;
 }
 
 void ScavTrap::guardGate()

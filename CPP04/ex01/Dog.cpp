@@ -1,16 +1,18 @@
 #include "Dog.hpp"
 
-Dog::Dog()  : type("Dog")
+Dog::Dog() : type("Dog")
 {
     std::cout << "Wait you adopted a " << this->type << " 🐶" << std::endl;
+    this->brain = new Brain();
 }
 Dog::Dog(std::string name) :type(name)
 {
-
+    std::cout << "Wait you adopted a " << this->type << " 🐶" << std::endl;
 }
 Dog::~Dog()
 {
-    std::cout << this->type << "ran away 🐾" << std::endl;
+    std::cout << this->type << " ran away 🐾" << std::endl;
+    delete this->brain;
 }
 Dog::Dog(const Dog& otherClass) : type(otherClass.type)
 {

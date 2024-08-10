@@ -6,20 +6,17 @@
 
 int main(void)
 {
-    DiamondTrap trapp("braulio");
-    DiamondTrap clapp("hugo");
-    // while (trapp.get_hitPo() > 0 && trapp.get_enePo() > 0)
+    DiamondTrap trapp("batman");
+    DiamondTrap clapp("jocker");
+    while (trapp.get_hitPo() > 0 && trapp.get_enePo() > 0)
     {
-        trapp.attack("hugo");
-        // if (clapp.get_attDam() == 30)
-            // clapp.beRepaired(1);
+        trapp.attack("jocker");
+        clapp.takeDamage(1);
+        if (trapp.get_attDam() == 20)
+            clapp.beRepaired(1);
     }
-    trapp.attack("hugo");
+    trapp.attack("jocker");
     trapp.whoAmI();
     clapp.whoAmI();
-    // trapp.takeDamage(10);
-    // clapp.attack("braulio");
-    // clapp.takeDamage(10);
-    // clapp.beRepaired(1);
     return 0;
 }

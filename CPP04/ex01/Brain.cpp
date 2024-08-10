@@ -9,9 +9,10 @@ Brain::~Brain()
 {
     std::cout << "Brain is dead" << std::endl;
 }
-Brain::Brain(const Brain &other) : ideas(other.ideas)
+Brain::Brain(const Brain &other)
 {
-
+    for (int i = 0; i < 100; i++)
+        ideas[i] = other.ideas[i];
 }
 Brain& Brain::operator=(const Brain &otherClass)
 {

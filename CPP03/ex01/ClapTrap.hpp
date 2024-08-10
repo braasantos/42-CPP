@@ -7,11 +7,13 @@
 
 class ClapTrap
 {
+    //changed to protected to so the derived class can inherit the
+    // the attributs of the base class
     protected:
         std::string _name;
         int _hitPoints;
-        int _enePoints;
-        int _attDamage;
+        int _energyPoints;
+        int _attackDamage;
     public:
         ClapTrap();
         ClapTrap(std::string name);
@@ -21,9 +23,6 @@ class ClapTrap
         void attack(const std::string& target);
         void takeDamage(unsigned int amount);
         void beRepaired(unsigned int amount);
-        // void set_hitPo(int number);
-        // void set_enePo(int number);
-        // void set_attDam(int number);
         std::string get_name(void);
         int get_hitPo(void);
         int get_enePo(void);

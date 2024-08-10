@@ -10,18 +10,18 @@ int ClapTrap::get_hitPo(void)
 }
 int ClapTrap::get_enePo(void)
 {
-    return this->_enePoints;
+    return this->_energyPoints;
 }
 int ClapTrap::get_attDam(void)
 {
-    return this->_attDamage;
+    return this->_attackDamage;
 }
 
-ClapTrap::ClapTrap() : _hitPoints(10), _enePoints(10), _attDamage(0)
+ClapTrap::ClapTrap() : _hitPoints(10), _energyPoints(10), _attackDamage(0)
 {
     std::cout << BLUE << "ClapTrap " << RESET << "Constructor was created" << std::endl;
 }
-ClapTrap::ClapTrap(std::string name) : _name(name), _hitPoints(10), _enePoints(10), _attDamage(0)
+ClapTrap::ClapTrap(std::string name) : _name(name), _hitPoints(10), _energyPoints(10), _attackDamage(0)
 {
     std::cout << BLUE << "ClapTrap " << RESET << this->_name << " was created" << std::endl;
 
@@ -34,8 +34,8 @@ ClapTrap::ClapTrap(const ClapTrap& otherClass)
 {
     this->_name = otherClass._name;
     this->_hitPoints = otherClass._hitPoints;
-    this->_enePoints = otherClass._enePoints;
-    this->_attDamage = otherClass._attDamage;
+    this->_energyPoints = otherClass._energyPoints;
+    this->_attackDamage = otherClass._attackDamage;
 }
 ClapTrap& ClapTrap::operator=(const ClapTrap& other)
 {
@@ -43,8 +43,8 @@ ClapTrap& ClapTrap::operator=(const ClapTrap& other)
     {
         this->_name = other._name;
         this->_hitPoints = other._hitPoints;
-        this->_enePoints = other._enePoints;
-        this->_attDamage = other._attDamage;
+        this->_energyPoints = other._energyPoints;
+        this->_attackDamage = other._attackDamage;
     }
     return *this;
 }
@@ -68,21 +68,21 @@ void ClapTrap::attack(const std::string& target)
     if (checkClapTrap(*this))
         return ;
     else
-        std::cout << BLUE << "ClapTrap " << RESET << this->_name << " attacks " << target << ", causing " << this->_attDamage << " points of damage!" << std::endl;
-    this->_enePoints--;
+        std::cout << BLUE << "ClapTrap " << RESET << this->_name << " attacks " << target << ", causing " << this->_attackDamage << " points of damage!" << std::endl;
+    this->_energyPoints--;
 }
 void ClapTrap::takeDamage(unsigned int amount)
 {
      if (checkClapTrap(*this))
         return ;
     this->_hitPoints -= amount;
-    std::cout << BLUE << "ClapTrap " << RESET << this->_name <<" was attacked causing " << this->_attDamage << " points of damage!" << std::endl;
+    std::cout << BLUE << "ClapTrap " << RESET << this->_name <<" was attacked causing " << this->_attackDamage << " points of damage!" << std::endl;
 }
 void ClapTrap::beRepaired(unsigned int amount)
 {
      if (checkClapTrap(*this))
         return ;
     this->_hitPoints += amount;
-    this->_enePoints--;
+    this->_energyPoints--;
     std::cout << BLUE << "ClapTrap " << RESET << this->_name << " was repaired!" << std::endl;
 }

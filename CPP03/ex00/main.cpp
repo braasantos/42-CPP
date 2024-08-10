@@ -2,11 +2,11 @@
 
 int main(void)
 {
-    ClapTrap trapp("braulio");
-    ClapTrap clapp("hugo");
+    ClapTrap trapp("batman");
+    ClapTrap clapp("jocker");
     while (trapp.get_hitPo() > 0 && trapp.get_enePo() > 0)
     {
-        trapp.attack("hugo");
+        trapp.attack("jocker");
         if (clapp.get_attDam() == 0)
             clapp.beRepaired(1);
     }

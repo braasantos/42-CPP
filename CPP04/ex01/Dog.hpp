@@ -8,6 +8,7 @@ class Dog : public Animal
 {
     private:
         std::string type;
+        Brain *brain;
     public:
         Dog();
         Dog(std::string name);

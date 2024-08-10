@@ -3,6 +3,7 @@
 Cat::Cat() : type("Cat")
 {
     std::cout << "Wait you adopted a " << this->type << " 🐱"<< std::endl;
+    this->brain = new Brain();
 }
 Cat::Cat(std::string name) :type(name)
 {
@@ -11,6 +12,7 @@ Cat::Cat(std::string name) :type(name)
 Cat::~Cat()
 {
     std::cout << this->type << "ran away 🐾" << std::endl;
+    delete this->brain;
 }
 Cat::Cat(const Cat& otherClass) : type(otherClass.type)
 {
