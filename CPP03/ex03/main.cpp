@@ -12,7 +12,7 @@ int main(void)
     {
         trapp.attack("jocker");
         clapp.takeDamage(1);
-        if (trapp.get_attDam() == 20)
+        if (trapp.get_attDam() == 30)
             clapp.beRepaired(1);
     }
     trapp.attack("jocker");

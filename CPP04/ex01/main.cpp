@@ -9,18 +9,16 @@
     // delete i;
 int main()
 {
+    int size = 10;
+    Animal *animals[size];
 
-    Animal *dog = NULL;
-    try
-    {
-        dog = new Dog("Stitch");
-    }
-    catch(const std::exception& e)
-    {
-        std::cerr << e.what() << std::endl;
-        return 1;
-    }
-    dog->makeSound();
-    delete dog;
+    for (int i = 0; i < size / 2; i++)
+        animals[i] = new Dog();
+    for (int i = size / 2; i < size; i++)
+        animals[i] = new Cat();
+    for (int i = 0; i < size; ++i)
+        animals[i]->makeSound();
+    for (int i = 0; i < size; ++i)
+        delete animals[i];
     return 0;
 }

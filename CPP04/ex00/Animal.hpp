@@ -1,4 +1,4 @@
-#pragma once 
+#pragma once
 
 #include <iostream>
 
@@ -15,3 +15,6 @@ class Animal
         virtual void makeSound() const;
         virtual std::string getType() const;
 };
+
+// without the virtual destructor, the destructor of animal would be called but the
+// dog or cat wouldnt
