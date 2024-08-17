@@ -2,6 +2,7 @@
 
 WrongAnimal::WrongAnimal()
 {
+    this->type = "WrongAnimal";
     std::cout << "WrongAnimal Constructor is called" << std::endl;
 }
 WrongAnimal::WrongAnimal(std::string name) :type(name)

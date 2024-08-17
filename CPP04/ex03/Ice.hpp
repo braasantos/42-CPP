@@ -1,19 +1,18 @@
 #pragma once
 
 #include "AMateria.hpp"
-#include "ICharacter.hpp"
-#include <iostream>
 
 class Ice : public AMateria
 {
-    protected:
-        std::string type;
+    // protected:
+    //     std::string type;
     public:
         Ice();
         Ice( std::string type );
         ~Ice();
         Ice( const Ice& otherClass );
         Ice& operator=( const Ice& otherClass );
-        Ice& Clone( void );
+        // std::string const & getType() const;
+        AMateria* clone( void ) const;
         void use(ICharacter& target);
 };

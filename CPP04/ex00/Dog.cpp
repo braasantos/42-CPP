@@ -12,8 +12,9 @@ Dog::~Dog()
 {
     std::cout << this->type << " ran away 🐾" << std::endl;
 }
-Dog::Dog(const Dog& otherClass) : type(otherClass.type)
+Dog::Dog(const Dog& otherClass) : Animal(otherClass)
 {
+    this->type = otherClass.type;
     std::cout << "Copy Constructor was called" << std::endl;
 }
 

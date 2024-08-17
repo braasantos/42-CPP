@@ -19,5 +19,7 @@ int main()
     //     delete animals[i];
     AAnimal *animals = new Dog();
     animals->makeSound();
+    delete animals;
+    // AAnimal obj;
     return 0;
 }

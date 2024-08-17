@@ -2,6 +2,7 @@
 
 WrongCat::WrongCat()
 {
+    this->type = "WrongCat";
     std::cout << "WrongCat Constructor is called" << std::endl;
 }
 WrongCat::WrongCat(std::string name) :type(name)
@@ -12,7 +13,7 @@ WrongCat::~WrongCat()
 {
     std::cout << "WrongCat Constructor is called" << std::endl;
 }
-WrongCat::WrongCat(const WrongCat& otherClass)
+WrongCat::WrongCat(const WrongCat& otherClass) : WrongAnimal(otherClass)
 {
   this->type = otherClass.type;
 }

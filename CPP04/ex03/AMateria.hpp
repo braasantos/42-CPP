@@ -4,6 +4,8 @@
 #include <iostream>
 #include <string>
 
+class ICharacter;
+
 class AMateria
 {
     protected:
@@ -14,7 +16,7 @@ class AMateria
         virtual ~AMateria();
         AMateria(const AMateria& otherClass);
         AMateria& operator=(const AMateria& otherClass);
-        std::string const & getType() const; //Returns the materia type
+        virtual std::string const & getType() const; //Returns the materia type
         virtual AMateria* clone() const = 0;
         virtual void use(ICharacter& target);
 };

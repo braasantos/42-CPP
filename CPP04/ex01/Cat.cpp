@@ -14,8 +14,9 @@ Cat::~Cat()
     std::cout << this->type << " ran away 🐾" << std::endl;
     delete this->brain;
 }
-Cat::Cat(const Cat& otherClass) : type(otherClass.type)
+Cat::Cat(const Cat& otherClass) : Animal(otherClass)
 {
+    this->type = otherClass.type;
     std::cout << "Copy Constructor was called" << std::endl;
 }
 

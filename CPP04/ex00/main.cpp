@@ -20,16 +20,16 @@ int main()
     delete i;
     delete j;
 
-    // std::cout << "-----------------------------------------" << std::endl;
+    std::cout << "-----------------------------------------" << std::endl;
 
-    // const WrongAnimal* animal = new WrongCat("braulio");
-    // animal->makeSound();
-    // delete animal;
+    const WrongAnimal* animal = new WrongCat("braulio");
+    animal->makeSound();
+    delete animal;
 
-    // std::cout << "-----------------------------------------" << std::endl;
+    std::cout << "-----------------------------------------" << std::endl;
     // SLICING
-    // WrongAnimal Animal = WrongCat("braulio");
-    // Animal.makeSound();
+    WrongAnimal Animal = WrongCat("braulio");
+    Animal.makeSound();
     // when a derived class is passed by value to the base the derived 
     // is sliced on only the base class remain 
     return 0;

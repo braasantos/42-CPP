@@ -2,19 +2,20 @@
 
 AMateria::AMateria()
 {
-    std::cout << "AMateria Constructor was called" << std::endl;
+    // std::cout << "AMateria Constructor was called" << std::endl;
 }
 AMateria::AMateria(std::string const & type) :type(type)
 {
-    std::cout << "AMateria Constructor was called" << std::endl;
+    // std::cout << "AMateria Constructor was called" << std::endl;
 }
 AMateria::~AMateria()
 {
-    std::cout << "AMateria Destructor was called" << std::endl;
+    // std::cout << "AMateria Destructor was called" << std::endl;
 }
 AMateria::AMateria(const AMateria& otherClass)
 {
-    this->type = otherClass.type;
+    *this = otherClass;
+    // this->type = otherClass.type;
 }
 AMateria& AMateria::operator=(const AMateria& otherClass)
 {

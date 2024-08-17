@@ -1,5 +1,5 @@
-NAME = animals
-SRC = main.cpp AMateria.cpp Cure.cpp Ice.cpp IMateriaSource.cpp ICharacter.cpp
+NAME = materials
+SRC = main.cpp AMateria.cpp Cure.cpp Ice.cpp Character.cpp MateriaSource.cpp
 OBJS_DIR = objs/
 OBJ = $(addprefix $(OBJS_DIR), $(SRC:.cpp=.o))
 CPP = c++
