@@ -26,10 +26,6 @@ Ice& Ice::operator=( const Ice& otherClass )
     return *this;
 }
 
-// std::string const & Ice::getType() const
-// {
-//     return this->type;
-// }
 
 AMateria* Ice::clone( void ) const
 {

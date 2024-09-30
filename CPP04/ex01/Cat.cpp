@@ -1,13 +1,15 @@
 #include "Cat.hpp"
 
-Cat::Cat() : type("Cat")
+Cat::Cat() : Animal()
 {
+    this->type = "Cat";
     std::cout << "Wait you adopted a " << this->type << " 🐱"<< std::endl;
     this->brain = new Brain();
 }
-Cat::Cat(std::string name) :type(name)
+Cat::Cat(std::string name) : Animal()
 {
-
+    this->type = name;
+    this->brain = new Brain();
 }
 Cat::~Cat()
 {
@@ -16,7 +18,7 @@ Cat::~Cat()
 }
 Cat::Cat(const Cat& otherClass) : Animal(otherClass)
 {
-    this->type = otherClass.type;
+    *this = otherClass;
     std::cout << "Copy Constructor was called" << std::endl;
 }
 
@@ -24,7 +26,12 @@ Cat& Cat::operator=(const Cat& otherClass)
 {
     std::cout << "Copy Assignment copy operator was called" << std::endl;
     if (this != &otherClass)
-        return *this;
+    {
+        this->type = otherClass.type;
+        Brain* newBrain = new Brain(*otherClass.brain);
+	    delete this->brain;
+	    this->brain = newBrain;
+    }
     return *this;
 }
 
@@ -35,4 +42,9 @@ void Cat::makeSound() const
 std::string Cat::getType() const
 {
     return this->type;
+}
+
+Brain* Cat::getBrain( void )
+{
+    return brain;
 }

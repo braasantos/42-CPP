@@ -27,10 +27,6 @@ Cure& Cure::operator=( const Cure& otherClass )
     return *this;
 }
 
-// std::string const & Cure::getType() const
-// {
-//     return this->type;
-// }
 
 AMateria* Cure::clone( void ) const
 {
@@ -39,5 +35,5 @@ AMateria* Cure::clone( void ) const
 }
 void Cure::use(ICharacter& target)
 {
-    std::cout << "* heals " << target.getName() << "’s wounds *" << std::endl;
+    std::cout << "* heals " << target.getName() << "'s wounds *" << std::endl;
 }

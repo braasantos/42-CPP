@@ -11,14 +11,14 @@ Animal::~Animal()
 {
     std::cout << "Animal ran away （ ◞ ‸◟。 ）" << std::endl; 
 }
-Animal::Animal(const Animal& otherClass) : type(otherClass.type)
+Animal::Animal(const Animal& otherClass)
 {
-
+    *this = otherClass;
 }
 Animal& Animal::operator=(const Animal& otherClass)
 {
     if (this != &otherClass)
-        return *this;
+        this->type = otherClass.type;
     return *this;
 }
 void Animal::makeSound() const

@@ -99,3 +99,13 @@ void Character::use(int idx, ICharacter& target)
     else
         this->_materia[idx]->use(target);
 }
+
+AMateria* Character::inventory_peek(int idx)
+{
+	if(idx < 0 || idx >= 4)
+	{
+		std::cout << "Invalid index" << std::endl;
+		return NULL;
+	}
+	return _materia[idx];
+}

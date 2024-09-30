@@ -12,13 +12,15 @@ Brain::~Brain()
 }
 Brain::Brain(const Brain &other)
 {
-    for (int i = 0; i < 100; i++)
-        ideas[i] = other.ideas[i];
+    *this = other;
 }
 Brain& Brain::operator=(const Brain &otherClass)
 {
     if (this != &otherClass)
-        return *this;
+    {
+        for (size_t i = 0; i < 100; i++)
+            this->ideas[i] = otherClass.ideas[i];
+    }
     return *this;
 }
 

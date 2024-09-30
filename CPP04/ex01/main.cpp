@@ -22,3 +22,22 @@ int main()
         delete animals[i];
     return 0;
 }
+
+// int main()
+// {
+// 	Cat* j = new Cat();
+// 	Cat* i = new Cat(*j);
+// 	Cat* k = new Cat();
+
+// 	*k = *j;
+// 	i->makeSound(); //will output the cat sound!
+// 	j->makeSound();
+
+// 	std::cout << "Brain of j " << j->getBrain() << std::endl;
+// 	std::cout << "Brain of i " << i->getBrain() << std::endl;
+// 	std::cout << "Brain of k " << k->getBrain() << std::endl;
+
+// 	delete k;
+// 	delete j;
+// 	delete i;
+// }
