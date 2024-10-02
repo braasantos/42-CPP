@@ -39,11 +39,15 @@ int main(int ac, char **av)
         std::cout << "---------------INTERN----------------" << std::endl;
         Intern someRandomIntern;
         AForm* rrf;
-        rrf = someRandomIntern.makeForm("RobotomyRequestForm", "Bender");
+        rrf = someRandomIntern.makeForm("robotomy request", "Bender");
+        AForm* ppf;
+        ppf = someRandomIntern.makeForm("presidential pardon", "Batman");
+        AForm* scf;
+        scf = someRandomIntern.makeForm("shrubbery creation", "Harvey");
         std::cout << "---------------THE END------------" << std::endl;
-        
-        // std::cout << b << std::endl;
-        // std::cout << form << std::endl;
+        delete rrf;
+        delete ppf;
+        delete scf;
     }
     catch(const std::exception& e)
     {

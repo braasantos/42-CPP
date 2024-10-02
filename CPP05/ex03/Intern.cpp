@@ -18,26 +18,42 @@ Intern::~Intern()
 {
     std::cout << "Intern destructor called" << std::endl;
 }
-AForm* Intern::makeForm(std::string form_name, std::string target)
+
+forms returnForm(std::string form_name)
 {
-    if (form_name == "PresidentialPardonForm")
-    {
-        std::cout << "Intern creates " << form_name << std::endl;
-        return new PresidentialPardonForm(target);
-    }
-    else if (form_name == "RobotomyRequestForm")
-    {
-        std::cout << "Intern creates " << form_name << std::endl;
-        return new RobotomyRequestForm(target);
-    }
-    else if (form_name == "ShrubberyCreationForm")
-    {
-        std::cout << "Intern creates " << form_name << std::endl;
-        return new ShrubberyCreationForm(target);
-    }
+    if (form_name == "robotomy request")
+        return ROBO;
+    else if (form_name == "presidential pardon")
+        return PRESI;
+    else if (form_name == "shrubbery creation")
+        return SHU;
     else
     {
-        std::cout << "Form not found" << std::endl;
-        return NULL;
+        std::cout << "Form name not avaliable" << std::endl << "Please try one od the followings" << std::endl;
+        std::cout << "[robotomy request]" << std::endl;
+        std::cout << "[presidential pardon]" << std::endl;
+        std::cout << "[shrubbery creation]" << std::endl;
+        return NOTFOUND;
     }
+}
+
+AForm* Intern::makeForm(std::string form_name, std::string target)
+{
+    forms form = returnForm(form_name); 
+    switch (form)
+    {
+        case 0:
+            std::cout << "Intern creates " << form_name << std::endl;
+            return new RobotomyRequestForm(target);
+        case 1:
+            std::cout << "Intern creates " << form_name << std::endl;
+            return new PresidentialPardonForm(target);
+        case 2:
+            std::cout << "Intern creates " << form_name << std::endl;
+            return new ShrubberyCreationForm(target);    
+        default:
+            std::cout << "Form not found" << std::endl;
+        break;
+    }
+    return NULL;
 }

@@ -6,6 +6,14 @@
 #include "ShrubberyCreationForm.hpp"
 #include <iostream>
 
+enum forms
+{
+    ROBO,
+    PRESI,
+    SHU,
+    NOTFOUND
+};
+
 class Intern
 {
     public :
