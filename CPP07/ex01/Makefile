@@ -1,5 +1,5 @@
-NAME = convert
-SRC = main.cpp ScalarConverter.cpp Convert.cpp
+NAME = iter
+SRC = main.cpp iter.cpp
 OBJS_DIR = objs/
 OBJ = $(addprefix $(OBJS_DIR), $(SRC:.cpp=.o))
 CPP = c++
@@ -31,4 +31,3 @@ fclean: clean
 re: fclean all
 
 .PHONY: all clean fclean re
-

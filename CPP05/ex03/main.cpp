@@ -28,7 +28,7 @@ int main(int ac, char **av)
         p.beSigned(b);
         b.signForm(p);
         b.executeForm(p);
-        std::cout << "-------------CHECK AND ROBOTOMY---------------" << std::endl;
+        std::cout << "-------------CHUCK AND ROBOTOMY---------------" << std::endl;
         r.beSigned(c);
         c.signForm(r);
         c.executeForm(r);

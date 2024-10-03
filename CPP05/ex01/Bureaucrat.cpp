@@ -39,14 +39,14 @@ std::string Bureaucrat:: getName() const
 }
 void Bureaucrat:: incrementGrade()
 {
-    if (this->_grade < 1)
+    if (this->_grade <= 1)
         throw Bureaucrat::GradeTooHighException();
     std::cout << "Incrementing grade" << std::endl;
     this->_grade--;
 }
 void Bureaucrat:: decrementGrade()
 {
-    if (this->_grade > 150)
+    if (this->_grade >= 150)
         throw Bureaucrat::GradeTooHighException();
     std::cout << "Decrementing grade" << std::endl;
     this->_grade++;

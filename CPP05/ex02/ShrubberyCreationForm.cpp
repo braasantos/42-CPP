@@ -11,7 +11,7 @@ ShrubberyCreationForm::ShrubberyCreationForm(std::string _target) : AForm("Shrub
     std::cout << "ShrubberyCreationForm constructor called" << std::endl;
     if (this->_grade_to_exec < 1 || this->_grade_to_sign < 1)
         throw AForm::GradeTooHighException();
-    else if (this->_grade_to_exec > 150 || this->_grade_to_sign > 150)
+    else if (this->_grade_to_exec > 137 || this->_grade_to_sign > 145)
         throw AForm::GradeTooLowException();
     this->_is_signed = false;
     this->_target = _target;

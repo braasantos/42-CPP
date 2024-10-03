@@ -1,4 +1,4 @@
-NAME = convert
+NAME = templates
 SRC = main.cpp whatever.cpp
 OBJS_DIR = objs/
 OBJ = $(addprefix $(OBJS_DIR), $(SRC:.cpp=.o))

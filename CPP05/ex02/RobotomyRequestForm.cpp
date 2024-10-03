@@ -11,7 +11,7 @@ RobotomyRequestForm::RobotomyRequestForm(std::string _target) : AForm("RobotomyR
     std::cout << "RobotomyRequestForm constructor called" << std::endl;
     if (this->_grade_to_exec < 1 || this->_grade_to_sign < 1)
         throw AForm::GradeTooHighException();
-    else if (this->_grade_to_exec > 150 || this->_grade_to_sign > 150)
+    else if (this->_grade_to_exec > 45 || this->_grade_to_sign > 72)
         throw AForm::GradeTooLowException();
     this->_is_signed = false;
     this->_target = _target;
@@ -44,7 +44,7 @@ void RobotomyRequestForm::execute(Bureaucrat const &executor) const
     if (executor.getGrade() <= this->_grade_to_exec)
     {
         std::cout << this->_name << " is making some drilling noises" << std::endl;
-        std::cout << this->_target << " has been robotomized successfully succeddfully 50% of the time" << std::endl;
+        std::cout << this->_target << " has been robotomized successfully" << std::endl;
     }
     else
     {

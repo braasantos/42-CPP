@@ -11,7 +11,7 @@ PresidentialPardonForm::PresidentialPardonForm(std::string _target) : AForm("Pre
     std::cout << "PresidentialPardonForm constructor called" << std::endl;
     if (this->_grade_to_exec < 1 || this->_grade_to_sign < 1)
         throw AForm::GradeTooHighException();
-    else if (this->_grade_to_exec > 150 || this->_grade_to_sign > 150)
+    else if (this->_grade_to_exec > 5 || this->_grade_to_sign > 25)
         throw AForm::GradeTooLowException();
     this->_is_signed = false;
     this->_target = _target;
