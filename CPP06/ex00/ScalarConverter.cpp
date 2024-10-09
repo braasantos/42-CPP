@@ -31,7 +31,6 @@ void ScalarConverter::convert(const char *str)
         std::cout << "Not a valid input" << std::endl;
 		return ;
 	}
-	// long double newStr = std::strtold(newstr.c_str(), NULL);
 	types = returnTypes(newstr);
 	switch (types)
 	{
