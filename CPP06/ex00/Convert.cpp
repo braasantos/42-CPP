@@ -20,9 +20,11 @@ int checkDigi(std::string str)
 			break ;
 		j++;
 	}
+	if (!std::isdigit(str[j]))
+			return 1;
     for (size_t i = j; i < str.size(); i++)
     {
-		if (str[i] == '.' || str[i] == 'f' || str[i] == '-' || str[i] == '+')
+		if (str[i] == '.' || str[i] == 'f')
 		{
 			i++;
 			continue;
@@ -50,25 +52,30 @@ int checkAlpha(std::string str)
     return 0;
 }	
 
-void printNaN(std::string str)
+void printNaN(double str)
 {
 	std::cout << "char: impossible" << std::endl;
     std::cout << "int: impossible" << std::endl;
-    std::cout << "float: " << str << "f" << std::endl;
+    std::cout << "float: " << static_cast<float>(str) << "f" << std::endl;
     std::cout << "double: " << str << std::endl;
 }
 
-void printChar(char c)
+void printChar(float f)
 {
-	std::cout << "char: ";
-	long newC = static_cast<long>(c);
-	if ((newC <= 32 && newC >= 0) || (newC < 256 && newC > 126))
-		std::cout << "Non displayable" << std::endl;
-	else if (newC < 0 || newC  > 255)
+    std::cout << "char: ";
+
+    if (f < 0 || f > 255)
         std::cout << "impossible" << std::endl;
 	else
-		std::cout << "'" << static_cast<char>(newC) << "'" << std::endl;
+	{
+        long newC = static_cast<long>(f);
+        if ((newC <= 32 && newC >= 0) || (newC < 256 && newC > 126))
+            std::cout << "Non displayable" << std::endl;
+        else
+            std::cout << "'" << static_cast<char>(newC) << "'" << std::endl;
+    }
 }
+
 
 void printInt(int num)
 {
@@ -85,13 +92,13 @@ void printFloat(float flo)
 	if (flo <= std::numeric_limits<float>::max() && flo >= -std::numeric_limits<float>::min())
 	{
 		float ff = static_cast<float>(flo);
-		if (ff == std::floor(ff) && ff < 1e7 && ff > -1e7)
+		if (ff == std::floor(ff) && ff < 1e7 && ff > -1e7) // rounds to the less than or equal
 			std::cout << ff << ".0f" << std::endl;
 		else
 			std::cout << ff << "f" << std::endl;
 	}
 	else
-		std::cout << flo << "f" << std::endl;
+		std::cout << "impossible" << std::endl;
 }
 
 void printDouble(double dou)
@@ -106,7 +113,7 @@ void printDouble(double dou)
 			std::cout << dd << std::endl;
 	}
 	else
-		std::cout << dou << std::endl;
+		std::cout << "impossible" << std::endl;
 }
 
 bool isChar(std::string str)
@@ -143,7 +150,13 @@ bool isDouble(const std::string& str)
 
 bool isNaN(const std::string& str)
 {
-    return (str == "nan" || str == "nanf" || str == "+inf" || str == "-inf"|| str == "inf");
+	if (str == "nan" || str == "nanf" || str == "+inf" || str == "-inf"|| str == "inf")
+    	return 1;
+	char *end = NULL;
+	double num = std::strtod(str.c_str(), &end);
+	if (str.size() >= 1 && (num <= -2147483648 || num >= 2147483647) && ((end[0] == 'f' && end[1] == '\0') || end[0] == '\0'))
+		return 1;
+	return 0;
 }
 
 type returnTypes(std::string str)

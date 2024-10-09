@@ -20,6 +20,9 @@ Base * generate(void)
         
     }
 }
+
+//  A type of casting in C++ that checks if a pointer or reference to a base class 
+//  can safely be converted to a pointer or reference to a derived class.
 void identify(Base* p)
 {
     if (dynamic_cast<A *>(p) != NULL)

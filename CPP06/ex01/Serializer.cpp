@@ -18,6 +18,9 @@ Serializer & Serializer::operator=(Serializer const &src)
         return *this;
     return *this;
 }
+
+//  A type of casting that lets you convert any pointer type
+//  to any other pointer type without any safety checks.
 uintptr_t Serializer::serialize(Data* ptr)
 {
     return reinterpret_cast<uintptr_t>(ptr);

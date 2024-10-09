@@ -36,8 +36,7 @@ void ScalarConverter::convert(const char *str)
 	{
 		case CHAR:
 		{
-			char c = static_cast<char>(str[0]);
-			// stCout(c);
+			float c = static_cast<float>(str[0]);
 			printChar(c);
 			printInt(c);
 			printFloat(c);
@@ -56,6 +55,7 @@ void ScalarConverter::convert(const char *str)
 		case DOUBLE:
 		{
 			double d = atof(newstr.c_str());
+			std::cout << "INT\n";
 			printChar(d);
 			printInt(d);
 			printFloat(d);
@@ -64,7 +64,7 @@ void ScalarConverter::convert(const char *str)
 		}
 		case FLOAT:
 		{
-    		float f = static_cast<float>(atof(newstr.c_str())); 
+    		float f = static_cast<float>(atof(newstr.c_str()));
 			printChar(f);
 			printInt(f);
 			printFloat(f);
@@ -74,10 +74,7 @@ void ScalarConverter::convert(const char *str)
 		case NOTANUNBER:
 		{
     		float f = static_cast<float>(atof(newstr.c_str())); 
-			printChar(f);
-			printInt(f);
-			printFloat(f);
-			printDouble(f);	
+			printNaN(f);
 			break;
 		}
 		default:

@@ -19,10 +19,9 @@ enum type
 
 void printError(void);
 
+void printNaN(double str);
 
-void printNaN(std::string str);
-
-void printChar(char c);
+void printChar(float c);
 
 void printInt(int num);
 

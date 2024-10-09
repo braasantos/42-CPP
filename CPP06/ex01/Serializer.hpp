@@ -9,7 +9,6 @@ struct Data
     std::string name;
 };
 
-
 class Serializer
 {
     public:
