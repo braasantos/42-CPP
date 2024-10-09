@@ -19,17 +19,16 @@ enum type
 
 void printError(void);
 
-void stCout(long double &str);
 
 void printNaN(std::string str);
 
-void printChar(long double &c);
+void printChar(char c);
 
-void printInt(long double &num);
+void printInt(int num);
 
-void printFloat(long double &flo);
+void printFloat(float flo);
 
-void printDouble(long double &dou);
+void printDouble(double dou);
 
 int checkDigi(std::string str);
 

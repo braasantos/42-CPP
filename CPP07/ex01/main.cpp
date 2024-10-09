@@ -12,8 +12,8 @@ int main(void)
     std::cout << "\nTesting with double array:" << std::endl;
     iter(doubleArr, 5, show);
 
-     // Test 2: Float array
-    Float FloatArr[5] = {1.1, 2.2, 3.3, 4.4, 5.5};
+    // Test 2: Float array
+    float FloatArr[5] = {1.1f, 2.2f, 3.3f, 4.4f, 5.5f};
     std::cout << "\nTesting with Float array:" << std::endl;
     iter(FloatArr, 5, show);
 

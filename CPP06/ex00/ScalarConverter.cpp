@@ -31,28 +31,56 @@ void ScalarConverter::convert(const char *str)
         std::cout << "Not a valid input" << std::endl;
 		return ;
 	}
-	long double newStr = std::strtold(newstr.c_str(), NULL);
+	// long double newStr = std::strtold(newstr.c_str(), NULL);
 	types = returnTypes(newstr);
 	switch (types)
 	{
 		case CHAR:
 		{
-			long double c = static_cast<long double>(str[0]);
-			stCout(c);
+			char c = static_cast<char>(str[0]);
+			// stCout(c);
+			printChar(c);
+			printInt(c);
+			printFloat(c);
+			printDouble(c);
 		}
 			break;
 		case INT:
-			stCout(newStr);
+		{
+			int i = atoi(newstr.c_str());
+			printChar(i);
+			printInt(i);
+			printFloat(i);
+			printDouble(i);
 			break;
+		}
 		case DOUBLE:
-			stCout(newStr);
+		{
+			double d = atof(newstr.c_str());
+			printChar(d);
+			printInt(d);
+			printFloat(d);
+			printDouble(d);
 			break;
+		}
 		case FLOAT:
-			stCout(newStr);
+		{
+    		float f = static_cast<float>(atof(newstr.c_str())); 
+			printChar(f);
+			printInt(f);
+			printFloat(f);
+			printDouble(f);
 			break;
+		}
 		case NOTANUNBER:
-			printNaN(str);	
+		{
+    		float f = static_cast<float>(atof(newstr.c_str())); 
+			printChar(f);
+			printInt(f);
+			printFloat(f);
+			printDouble(f);	
 			break;
+		}
 		default:
 			std::cout << "Invalid string literal" << std::endl;
 			break;

@@ -58,25 +58,28 @@ void printNaN(std::string str)
     std::cout << "double: " << str << std::endl;
 }
 
-void printChar(long double &c)
+void printChar(char c)
 {
 	std::cout << "char: ";
-	if (c >= 32 && c <= 126)
-		std::cout << "'" << static_cast<char>(c) << "'" << std::endl;
-	else
+	long newC = static_cast<long>(c);
+	if ((newC <= 32 && newC >= 0) || (newC < 256 && newC > 126))
 		std::cout << "Non displayable" << std::endl;
+	else if (newC < 0 || newC  > 255)
+        std::cout << "impossible" << std::endl;
+	else
+		std::cout << "'" << static_cast<char>(newC) << "'" << std::endl;
 }
 
-void printInt(long double &num)
+void printInt(int num)
 {
     std::cout << "int: ";
 	if (num <= std::numeric_limits<int>::max() && num >= -std::numeric_limits<int>::min())
 		std::cout << static_cast<int>(num) << std::endl;
 	else
-		std::cout << "Int overflow\n";
+		std::cout << "impossible" << std::endl;
 }
 
-void printFloat(long double &flo)
+void printFloat(float flo)
 {
 	std::cout << "float: ";
 	if (flo <= std::numeric_limits<float>::max() && flo >= -std::numeric_limits<float>::min())
@@ -88,10 +91,10 @@ void printFloat(long double &flo)
 			std::cout << ff << "f" << std::endl;
 	}
 	else
-		std::cout << "Float overflow\n";
+		std::cout << flo << "f" << std::endl;
 }
 
-void printDouble(long double &dou)
+void printDouble(double dou)
 {
     std::cout << "double: ";
 	if (dou <= std::numeric_limits<double>::max() && dou >= -std::numeric_limits<double>::min())
@@ -103,7 +106,7 @@ void printDouble(long double &dou)
 			std::cout << dd << std::endl;
 	}
 	else
-		std::cout << "Double overflow\n";
+		std::cout << dou << std::endl;
 }
 
 bool isChar(std::string str)
@@ -141,14 +144,6 @@ bool isDouble(const std::string& str)
 bool isNaN(const std::string& str)
 {
     return (str == "nan" || str == "nanf" || str == "+inf" || str == "-inf"|| str == "inf");
-}
-
-void stCout(long double &str)
-{
-	printChar(str);
-	printInt(str);
-	printFloat(str);
-	printDouble(str);
 }
 
 type returnTypes(std::string str)
