@@ -55,7 +55,6 @@ void ScalarConverter::convert(const char *str)
 		case DOUBLE:
 		{
 			double d = atof(newstr.c_str());
-			std::cout << "INT\n";
 			printChar(d);
 			printInt(d);
 			printFloat(d);

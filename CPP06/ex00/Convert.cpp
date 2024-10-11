@@ -11,7 +11,7 @@ int checkDigi(std::string str)
 	size_t j = 0;
 	while (j < str.size())
 	{
-		if (str[j] == '-' || str[j] == '+')
+		if (str[j] == '-' || str[j] == '+' || str[j] == '.')
         {
             j++;
             continue;
@@ -89,13 +89,12 @@ void printInt(int num)
 void printFloat(float flo)
 {
 	std::cout << "float: ";
-	if (flo <= std::numeric_limits<float>::max() && flo >= -std::numeric_limits<float>::min())
+	if (flo <= std::numeric_limits<float>::max() && flo >= -std::numeric_limits<float>::max())
 	{
-		float ff = static_cast<float>(flo);
-		if (ff == std::floor(ff) && ff < 1e7 && ff > -1e7) // rounds to the less than or equal
-			std::cout << ff << ".0f" << std::endl;
+		if (flo == std::floor(flo) && flo < 1e7 && flo > -1e7) // rounds to the less than or equal
+			std::cout << flo << ".0f" << std::endl;
 		else
-			std::cout << ff << "f" << std::endl;
+			std::cout << flo << "f" << std::endl;
 	}
 	else
 		std::cout << "impossible" << std::endl;
@@ -104,17 +103,17 @@ void printFloat(float flo)
 void printDouble(double dou)
 {
     std::cout << "double: ";
-	if (dou <= std::numeric_limits<double>::max() && dou >= -std::numeric_limits<double>::min())
+	if (dou <= std::numeric_limits<double>::max() && dou >= -std::numeric_limits<double>::max())
 	{
-		double dd = static_cast<double>(dou);
-		if (dd == std::floor(dd) && dd < 1e7 && dd > -1e7)
-			std::cout << dd << ".0" << std::endl;
+		if (dou == std::floor(dou) && dou < 1e7 && dou > -1e7)
+			std::cout << dou << ".0" << std::endl;
 		else
-			std::cout << dd << std::endl;
+			std::cout << dou << std::endl;
 	}
 	else
 		std::cout << "impossible" << std::endl;
 }
+
 
 bool isChar(std::string str)
 {
