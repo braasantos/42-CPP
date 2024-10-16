@@ -9,15 +9,17 @@ Base * generate(void)
 {
     srand(static_cast<unsigned int>(time(0)));
     int randomNum = rand() % 3 + 1;
+    // int randomNum = rand() % 10;
     switch (randomNum)
     {
         case 1:
             return dynamic_cast<Base *>(new A());
         case 2:
             return dynamic_cast<Base *>(new B());
-        default:
+        case 3:
             return dynamic_cast<Base *>(new C());
-        
+        default:
+            return NULL;
     }
 }
 
@@ -34,6 +36,9 @@ void identify(Base* p)
     else
         std::cout << "UNKNOWN TYPE" << std::endl;
 }
+
+// bc this is a reference we do not need to ask these questions but just casting throw 
+// the errors when the cast is invalid and & cannot be null 
 void identify(Base& p)
 {
     try

@@ -52,9 +52,8 @@ class Array
         }
         T &operator[](unsigned int i)
         {
-            if (i >= this->_size)
-                throw(std::out_of_range("Array index out of bounds!"));
-            else
+            if (i >= 0 && i < this->_size)
                 return this->_arr[i];
+            throw(std::out_of_range("Array index out of bounds!"));
         }
 };

@@ -1,0 +1,16 @@
+{
+	"folders": [
+		{
+			"path": "../.."
+		},
+		{
+			"path": "../../../irc"
+		},
+		{
+			"path": "../../../Learning"
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "Learning"
+	}
+}

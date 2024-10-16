@@ -4,7 +4,7 @@
 template <typename T>
 void show(T arg)
 {
-    std::cout << arg << std::endl;
+    std::cout << "[ " << arg << " ]" <<std::endl;
 }
 
 template <typename T>

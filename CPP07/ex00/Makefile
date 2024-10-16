@@ -1,5 +1,5 @@
 NAME = templates
-SRC = main.cpp whatever.cpp
+SRC = main.cpp
 OBJS_DIR = objs/
 OBJ = $(addprefix $(OBJS_DIR), $(SRC:.cpp=.o))
 CPP = c++

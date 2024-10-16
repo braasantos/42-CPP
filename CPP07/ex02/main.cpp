@@ -67,5 +67,7 @@ int main(int, char**)
         numbers[i] = rand();
     }
     delete [] mirror;//
+    // int * a = new int();
+    // std::cout << a << std::endl;
     return 0;
 }      
