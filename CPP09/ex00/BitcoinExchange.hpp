@@ -3,3 +3,17 @@
 #include <iostream>
 #include <string>
 #include <fstream>
+#include <map>
+#include <algorithm>
+
+class BitoinExchange
+{
+    private:
+    std::map<int, std::string> mapi;
+    public:
+    BitoinExchange();
+    BitoinExchange(BitoinExchange const &src);
+    BitoinExchange& operator=(BitoinExchange const &src);
+    ~BitoinExchange();
+
+};
