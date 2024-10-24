@@ -38,7 +38,7 @@ void BitcoinExchange::checkData(std::string data)
         std::cerr << "[ERROR] Invalid date format : " << data << std::endl;
     std::string strYear = data.substr(0, sign);
     int year = std::atoi(strYear.c_str());
-    if (year > 2022 || year < 2009)
+    if (year < 2009)
         std::cerr << "[ERROR] Not a valid Year : " << year << std::endl;
     std::string strMonth = data.substr(sign + 1, ssign - sign - 1);
     int month = std::atoi(strMonth.c_str());
