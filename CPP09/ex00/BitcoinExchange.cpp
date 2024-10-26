@@ -25,29 +25,31 @@ const char* BitcoinExchange::fileOpening::what() const throw()
 }
 
 
-void BitcoinExchange::checkData(std::string data)
+int BitcoinExchange::checkData(std::string data)
 {
     if (data.length() != 10)
-    {
-        std::cerr << "[ERROR] Invalid date, please use YYYY-MM-DD" << std::endl;
-        return ;
-    }
+        return (std::cerr << "[ERROR] Invalid date, please use YYYY-MM-DD" << std::endl, 1);
     size_t sign = data.find('-');
     size_t ssign = data.find('-', sign + 1);
     if (sign == std::string::npos || ssign == std::string::npos)
-        std::cerr << "[ERROR] Invalid date format : " << data << std::endl;
+        return (std::cerr << "[ERROR] Invalid date format : " << data << std::endl, 1 );
     std::string strYear = data.substr(0, sign);
     int year = std::atoi(strYear.c_str());
     if (year < 2009)
-        std::cerr << "[ERROR] Not a valid Year : " << year << std::endl;
+        return (std::cerr << "[ERROR] Not a valid Year : " << year << std::endl, 1 );
     std::string strMonth = data.substr(sign + 1, ssign - sign - 1);
     int month = std::atoi(strMonth.c_str());
     if (month > 12 || month < 1)
-        std::cerr << "[ERROR] Not a valid Month : " << month << std::endl;
+        return (std::cerr << "[ERROR] Not a valid Month : " << month << std::endl, 1 );
     std::string strDay = data.substr(ssign + 1);
     int day = std::atoi(strDay.c_str());
-    if (day > 31 || day < 1)
-        std::cerr << "[ERROR] Not a valid Day : " << day << std::endl;
+    int daysInMonth[] = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+    bool isLeap = (year % 4 == 0 && year % 100 != 0) || (year % 400 == 0);
+    if (isLeap && month == 2)
+        daysInMonth[1] = 29;
+    if (day < 1 || day > daysInMonth[month - 1])
+        return (std::cerr << "[ERROR] Not a valid Day: " << day << std::endl, 1 );
+    return 0;
 }   
 
 int BitcoinExchange::lastCheck(std::string value)
@@ -96,8 +98,7 @@ void BitcoinExchange::checkArg(char *av)
         {
             std::string data = line.substr(0, pipe - 1);
             std::string value = line.substr(pipe + 1);
-            checkData(data);
-            if (lastCheck(value))
+            if (lastCheck(value) || checkData(data))
                 continue ;
             long newValue = checkValue(value);
             if (newValue > 1000 || newValue < 0)
@@ -136,6 +137,8 @@ void BitcoinExchange::openCSV(std::string data)
         else
         {
             std::string datas = line.substr(0, comma);
+            if (checkData(datas))
+                break ;
             std::string num = line.substr(comma + 1, line.length());
             double key = std::atof(num.c_str());
             this->mapi.insert(std::make_pair(datas, key));
