@@ -3,5 +3,7 @@
 #include <vector>
 #include <cstdlib>
 #include <deque>
+#include <list>
 #include <limits>
 #include <iomanip>
+#include <algorithm> 

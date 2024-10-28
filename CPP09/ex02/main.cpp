@@ -12,11 +12,26 @@ int checkDigit(char *str)
         return 1;
     return 0;
 }
+
 template <typename T>
-T FordJohnson(T &cont)
+void binaryInsert(T &cont, int start, int end, int value)
+{
+    while (start < end)
+	{
+		int mid = start + (end - start) / 2;
+		if (cont[mid] < value)
+			start = mid + 1;
+		else
+			end = mid;
+	}
+	cont.insert(cont.begin() + start, value);
+}
+
+template <typename T>
+void FordJohnson(T &cont)
 {
     if (cont.size() < 2)
-        return cont;
+        return ;
     T sValues;
     T bValues;
     for(size_t i = 0; i < (cont.size() / 2); i++)
@@ -32,25 +47,14 @@ T FordJohnson(T &cont)
             bValues.push_back(cont[2 * i]);
         }
     }
-    
     if (cont.size() % 2 != 0)
         sValues.push_back(cont[cont.size() - 1]);
-
-    sValues = FordJohnson(sValues);
-    bValues = FordJohnson(bValues);
-
-    cont.clear();
-    size_t i = 0, j = 0;
-    while (i < sValues.size() && j < bValues.size())
-    {
-        if (sValues[i] < bValues[j])
-            cont.push_back(sValues[i++]);
-        else
-            cont.push_back(bValues[j++]);
-    }
-    while (i < sValues.size()) cont.push_back(sValues[i++]);
-    while (j < bValues.size()) cont.push_back(bValues[j++]);
-    return cont;
+    FordJohnson(bValues);
+    FordJohnson(sValues);
+    T result = bValues;
+    for (size_t i = 0; i < sValues.size(); ++i)
+        binaryInsert(result, 0, result.size(), sValues[i]);
+    cont = result;
 }
 
 int main(int ac, char **av)
@@ -76,6 +80,7 @@ int main(int ac, char **av)
         for (size_t i = 0; i < vec.size(); i++)
             std::cout << vec[i] << " ";
         std::cout << std::endl;
+
         std::cout << "[Unsorted deque] -> ";
         for (size_t i = 0; i < deq.size(); i++)
             std::cout << deq[i] << " ";
@@ -88,14 +93,17 @@ int main(int ac, char **av)
         clock_t deq_start = clock();
         FordJohnson(deq);
         clock_t deq_end= clock();
+
         std::cout << "[Sorted vector] -> ";
         for (size_t i = 0; i < vec.size(); i++)
             std::cout << vec[i] << " ";
         std::cout << std::endl;
+
         std::cout << "[Sorted deque] -> ";
         for (size_t i = 0; i < deq.size(); i++)
             std::cout << deq[i] << " ";
         std::cout << std::endl;
+
         double vec_time = double(vec_end - vec_start);
         std::cout << "Time to process a range of " << vec.size() << " elements with std::vector : " << std::fixed
               << vec_time << std::setprecision(5) << " us" << std::endl;
