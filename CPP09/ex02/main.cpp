@@ -1,114 +1,65 @@
 #include "PmergeMe.hpp"
 
-int checkDigit(char *str)
-{
-    for (int i = 0; str[i]; i++)
-    {
-        if (!isdigit(str[i]))
-            return 1;
-    }
-    long num = std::atol(str);
-    if (num >= std::numeric_limits<int>::max() || num <= std::numeric_limits<int>::min())
-        return 1;
-    return 0;
-}
-
-template <typename T>
-void binaryInsert(T &cont, int start, int end, int value)
-{
-    while (start < end)
-	{
-		int mid = start + (end - start) / 2;
-		if (cont[mid] < value)
-			start = mid + 1;
-		else
-			end = mid;
-	}
-	cont.insert(cont.begin() + start, value);
-}
-
-template <typename T>
-void FordJohnson(T &cont)
-{
-    if (cont.size() < 2)
-        return ;
-    T sValues;
-    T bValues;
-    for(size_t i = 0; i < (cont.size() / 2); i++)
-    {
-        if (cont[2 * i] < cont[2 * i + 1])
-        {
-            sValues.push_back(cont[2 * i]);
-            bValues.push_back(cont[2 * i + 1]);
-        }
-        else
-        {
-            sValues.push_back(cont[2 * i + 1]);
-            bValues.push_back(cont[2 * i]);
-        }
-    }
-    if (cont.size() % 2 != 0)
-        sValues.push_back(cont[cont.size() - 1]);
-    FordJohnson(bValues);
-    FordJohnson(sValues);
-    T result = bValues;
-    for (size_t i = 0; i < sValues.size(); ++i)
-        binaryInsert(result, 0, result.size(), sValues[i]);
-    cont = result;
-}
-
 int main(int ac, char **av)
 {
     if (ac < 2)
         return (std::cerr << "[ERROR] wrong usage" << std::endl, 1);
     else
     {
-        std::vector<int> vec;
-        std::deque<int> deq;
         {
-            for (int i = 1; av[i]; i++)
-            {
-                if (checkDigit(av[i]))
-                    return (std::cerr << "[ERROR]: Invalid number" << std::endl, 1);
-                int value = std::atoi(av[i]);
-                vec.push_back(value);
-                deq.push_back(value);
-            }
+            std::vector<int> vec;
+            if (addNumbers(vec, av))
+                return 0;
+            std::cout << "[Unsorted vector] -> ";
+            for (size_t i = 0; i < vec.size(); i++)
+                std::cout << vec[i] << " ";
+            std::cout << std::endl;
+            clock_t vec_start= clock();
+            FordJohnson(vec);
+            clock_t vec_end = clock();
+            std::cout << "[Sorted vector] -> ";
+            for (size_t i = 0; i < vec.size(); i++)
+                std::cout << vec[i] << " ";
+            std::cout << std::endl;
+            double vec_time = double(vec_end - vec_start);
+            std::cout << "Time to process a range of " << vec.size() << " elements with std::vector : " << std::fixed
+                << vec_time << std::setprecision(5) << " us" << std::endl;
         }
-
-        std::cout << "[Unsorted vector] -> ";
-        for (size_t i = 0; i < vec.size(); i++)
-            std::cout << vec[i] << " ";
-        std::cout << std::endl;
-
-        std::cout << "[Unsorted deque] -> ";
-        for (size_t i = 0; i < deq.size(); i++)
-            std::cout << deq[i] << " ";
-        std::cout << std::endl;
-
-        clock_t vec_start= clock();
-        FordJohnson(vec);
-        clock_t vec_end = clock();
-
-        clock_t deq_start = clock();
-        FordJohnson(deq);
-        clock_t deq_end= clock();
-
-        std::cout << "[Sorted vector] -> ";
-        for (size_t i = 0; i < vec.size(); i++)
-            std::cout << vec[i] << " ";
-        std::cout << std::endl;
-
-        std::cout << "[Sorted deque] -> ";
-        for (size_t i = 0; i < deq.size(); i++)
-            std::cout << deq[i] << " ";
-        std::cout << std::endl;
-
-        double vec_time = double(vec_end - vec_start);
-        std::cout << "Time to process a range of " << vec.size() << " elements with std::vector : " << std::fixed
-              << vec_time << std::setprecision(5) << " us" << std::endl;
-        double deq_time = double(deq_end - deq_start);
-        std::cout << "Time to process a range of " << deq.size() << " elements with std::deque : " << std::fixed
-              << deq_time << std::setprecision(5) << " us" << std::endl;
+        {
+            std::deque<int> deq;
+            if (addNumbers(deq, av))
+                return (std::cout << "TESTE" << std::endl, 1);
+            std::cout << "[Unsorted deque] -> ";
+            for (size_t i = 0; i < deq.size(); i++)
+                std::cout << deq[i] << " ";
+            std::cout << std::endl;
+            clock_t deq_start = clock();
+            FordJohnson(deq);
+            clock_t deq_end= clock();
+            std::cout << "[Sorted deque] -> ";
+            for (size_t i = 0; i < deq.size(); i++)
+                std::cout << deq[i] << " ";
+            std::cout << std::endl;
+            double deq_time = double(deq_end - deq_start);
+            std::cout << "Time to process a range of " << deq.size() << " elements with std::deque : " << std::fixed
+                << deq_time << std::setprecision(5) << " us" << std::endl;
+        }
     }
 }
+
+//      std::vector: Uses a contiguous block of memory,
+//      meaning all elements are stored in one continuous chunk.
+//      This layout is highly cache-friendly, so accessing elements sequentially
+//      (as during sorting) is very fast.
+//      std::deque: Consists of multiple memory blocks, often with each block
+//      containing a fixed number of elements. This design allows for efficient
+//      insertions and deletions at both the front and back, but it’s less cache-friendly
+//      because elements are not stored contiguously.
+
+// Access Speed:
+
+//      With std::vector, accessing an element by index is usually a 
+//      single pointer arithmetic operation, which is very fast.
+//      For std::deque, accessing an element involves first locating
+//      the appropriate memory block, which may add some overhead. This additional indirection
+//      increases access time compared to a vector.
