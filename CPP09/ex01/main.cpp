@@ -7,12 +7,17 @@ int main(int ac, char **av)
     else
     {
         RPN rpn;
-        for (int i = 0; av[1][i]; i++)
+        std::string str = av[1];
+        for (int i = 0; str[i]; i++)
         {
-            while (av[1][i] && isspace(av[1][i]))
+            while (str[i] && isspace(str[i]))
                 i++;
-            if (rpn.pushToStack(av[1][i]))
-                return 1;
+            if (str[i] == '\0')
+                break;
+            if (rpn.pushToStack(str[i]))
+                    return 1;
+            while (isspace(str[i]))
+                i++;
         }
         if (rpn.stck.size() > 1)
             return (std::cout << "[ERROR]" << std::endl, 1);

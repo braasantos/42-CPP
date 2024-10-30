@@ -3,7 +3,7 @@ SRC = main.cpp RPN.cpp
 OBJS_DIR = objs/
 OBJ = $(addprefix $(OBJS_DIR), $(SRC:.cpp=.o))
 CPP = c++
-CFLAGS = -Wall -Werror -Wextra -std=c++98
+CFLAGS = -Wall -Werror -Wextra -std=c++98 -g
 COMPILER = $(CPP) $(CFLAGS)
 RM = rm -f
 
