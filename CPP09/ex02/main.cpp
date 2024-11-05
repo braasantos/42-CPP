@@ -8,41 +8,42 @@ int main(int ac, char **av)
     {
         {
             std::vector<int> vec;
-            if (addNumbers(vec, av))
+            PmergeMe pm;
+            if (pm.addNumbersVec(vec, av))
                 return 0;
-            std::cout << "[Unsorted vector] -> ";
-            for (size_t i = 0; i < vec.size(); i++)
-                std::cout << vec[i] << " ";
-            std::cout << std::endl;
-            clock_t vec_start= clock();
-            FordJohnson(vec);
-            clock_t vec_end = clock();
-            std::cout << "[Sorted vector] -> ";
-            for (size_t i = 0; i < vec.size(); i++)
-                std::cout << vec[i] << " ";
-            std::cout << std::endl;
-            double vec_time = double(vec_end - vec_start);
-            std::cout << "Time to process a range of " << vec.size() << " elements with std::vector : " << std::fixed
-                << vec_time << std::setprecision(5) << " us" << std::endl;
+            // std::cout << "[Unsorted vector] -> ";
+            // for (size_t i = 0; i < vec.size(); i++)
+            //     std::cout << vec[i] << " ";
+            // std::cout << std::endl;
+            // clock_t vec_start= clock();
+            pm.FordJohnsonVec(vec);
+            // clock_t vec_end = clock();
+            // std::cout << "[Sorted vector] -> ";
+            // for (size_t i = 0; i < vec.size(); i++)
+            //     std::cout << vec[i] << " ";
+            // std::cout << std::endl;
+            // double vec_time = double(vec_end - vec_start);
+            // std::cout << "Time to process a range of " << vec.size() << " elements with std::vector : " << std::fixed
+            //     << vec_time << std::setprecision(5) << " us" << std::endl;
         }
         {
-            std::deque<int> deq;
-            if (addNumbers(deq, av))
-                return (std::cout << "TESTE" << std::endl, 1);
-            std::cout << "[Unsorted deque] -> ";
-            for (size_t i = 0; i < deq.size(); i++)
-                std::cout << deq[i] << " ";
-            std::cout << std::endl;
-            clock_t deq_start = clock();
-            FordJohnson(deq);
-            clock_t deq_end= clock();
-            std::cout << "[Sorted deque] -> ";
-            for (size_t i = 0; i < deq.size(); i++)
-                std::cout << deq[i] << " ";
-            std::cout << std::endl;
-            double deq_time = double(deq_end - deq_start);
-            std::cout << "Time to process a range of " << deq.size() << " elements with std::deque : " << std::fixed
-                << deq_time << std::setprecision(5) << " us" << std::endl;
+            // std::deque<int> deq;
+            // if (addNumbers(deq, av))
+            //     return (std::cout << "TESTE" << std::endl, 1);
+            // std::cout << "[Unsorted deque] -> ";
+            // for (size_t i = 0; i < deq.size(); i++)
+            //     std::cout << deq[i] << " ";
+            // std::cout << std::endl;
+            // clock_t deq_start = clock();
+            // FordJohnson(deq);
+            // clock_t deq_end= clock();
+            // std::cout << "[Sorted deque] -> ";
+            // for (size_t i = 0; i < deq.size(); i++)
+            //     std::cout << deq[i] << " ";
+            // std::cout << std::endl;
+            // double deq_time = double(deq_end - deq_start);
+            // std::cout << "Time to process a range of " << deq.size() << " elements with std::deque : " << std::fixed
+            //     << deq_time << std::setprecision(5) << " us" << std::endl;
         }
     }
 }

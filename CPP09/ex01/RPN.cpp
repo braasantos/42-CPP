@@ -48,7 +48,7 @@ void RPN::show()
 
 int RPN::pushToStack(char c)
 {
-    if (c && isValid(c))
+    if (isValid(c))
     {
         if (isdigit(c))
         {

@@ -2,7 +2,12 @@
 
 Span::Span(): N(0){}
 
-Span::Span(unsigned int n){this->N = n;}
+Span::Span(unsigned int n)
+{
+    if (n < 0 || n >= 2147483647)
+        throw std::invalid_argument("Invalid size for Span.");
+    this->N = n;
+}
 
 Span::Span(Span const &src)
 {
@@ -24,14 +29,14 @@ Span::~Span(){}
 
 void Span::addNumber(int n)
 {
-    if (this->vec.size() <= this->N)
+    if (this->vec.size() < this->N)
         vec.push_back(n);
     else
         throw(std::out_of_range("Cannot add more numbers"));
 }
 int Span::longestSpan()
 {
-    if (this->vec.size() < 1)
+    if (this->vec.size() <= 1)
         throw(std::out_of_range("No span found"));
     std::sort(this->vec.begin(), this->vec.end());
     int max = *std::max_element(this->vec.begin(), this->vec.end());
@@ -41,7 +46,7 @@ int Span::longestSpan()
 
 int Span::shortestSpan()
 {
-    if (this->vec.size() < 1)
+    if (this->vec.size() <= 1)
         throw(std::out_of_range("No span found"));
     std::sort(this->vec.begin(), this->vec.end());
     int max = *std::max_element(this->vec.begin(), this->vec.end());
@@ -64,12 +69,19 @@ int Span::shortestSpan()
 void Span::addAutomatic()
 {
     size_t i = this->N;
-    if (this->N < 1)
-        throw(std::out_of_range("Cannot add more numbers"));
-    while (i)
+    if (this->vec.size() < this->N)
     {
-        const int value = rand();
-        vec.push_back(value); // Add an element
-        i--;
+        if (this->N < 1)
+            throw(std::out_of_range("Cannot add more numbers"));
+        std::vector<int> newVec;
+        while (i)
+        {
+            const int value = rand();
+            newVec.push_back(value);
+            i--;
+        }
+        vec.insert(vec.end(), newVec.begin(), newVec.end());
     }
+    else
+        throw(std::out_of_range("Cannot add more numbers"));
 }

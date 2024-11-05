@@ -19,15 +19,28 @@ int main()
     mstack.push(1000);
     std::cout << "last element " << mstack.top() << std::endl;
     std::cout << "size " << mstack.size() << std::endl;
-    MutantStack<int>::iterator it = mstack.begin();
-    MutantStack<int>::iterator ite = mstack.end();
-    ++it;
-    --it;
-    while (it != ite)
     {
-        std::cout << *it << std::endl;
+        MutantStack<int>::iterator it = mstack.begin();
+        MutantStack<int>::iterator ite = mstack.end();
         ++it;
+        --it;
+        while (it != ite)
+        {
+            std::cout << *it << std::endl;
+            ++it;
+        }
     }
-    std::stack<int> s(mstack);
+    // MutantStack<int> s(mstack);
+    // s.push(18);
+    // s.push(18);
+    // s.push(18);
+    // s.push(18);
+    // MutantStack<int>::iterator it = s.begin();
+    // MutantStack<int>::iterator ite = s.end();
+    // while (it != ite)
+    // {
+    //     std::cout << *it << std::endl;
+    //     ++it;
+    // }
     return 0;
 }
