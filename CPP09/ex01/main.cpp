@@ -15,7 +15,7 @@ int main(int ac, char **av)
             while (str[i] && isspace(str[i]))
                 i++;
             if (str[i] == '\0')
-                continue;
+                break;
             if (rpn.pushToStack(str[i]))
                 return 1;
         }

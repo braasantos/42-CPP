@@ -69,7 +69,7 @@ int RPN::pushToStack(char c)
 
 int RPN::operations(char c)
 {
-    if (this->stck.size() == 1)
+    if (this->stck.size() <= 1)
         return (std::cerr << "[ERROR]" << std::endl, 1);
     int num1, num2, result;
     int digit = this->stck.top();
