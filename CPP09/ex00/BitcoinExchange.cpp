@@ -49,6 +49,8 @@ int BitcoinExchange::checkData(std::string data)
         daysInMonth[1] = 29;
     if (day < 1 || day > daysInMonth[month - 1])
         return (std::cerr << "[ERROR] Not a valid Day: " << day << std::endl, 1 );
+    if (day == 1 && month == 1 && year == 2009)
+        return (std::cerr << "[ERROR] Not a valid Date" << std::endl, 1 );
     return 0;
 }   
 

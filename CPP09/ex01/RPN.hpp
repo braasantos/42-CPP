@@ -2,12 +2,13 @@
 
 #include <iostream>
 #include <stack>
+#include <sstream>
+#include <cstdlib>
 
 class RPN
 {
     public:
-        std::stack<int> stck;
-
+        std::stack<std::string> stck;
         RPN();
         RPN(RPN const &src);
         RPN& operator=(RPN const &src);
@@ -19,4 +20,6 @@ class RPN
         void show();
         int operations(char c);
         int pushToStack(char c);
+        int createStack(const std::string &str, const std::string delimiter);
+        int checkToken(std::string token);
 };
