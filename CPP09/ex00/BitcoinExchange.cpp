@@ -69,6 +69,8 @@ int BitcoinExchange::lastCheck(std::string value)
             return 1;
         }
     }
+    if (value.length() < 1)
+        return (std::cerr << "[ERROR] Value not found" << std::endl, 1);
     return 0;
 }
 
@@ -80,6 +82,20 @@ long BitcoinExchange::checkValue(std::string value)
     else if (price < 0)
         std::cerr << "[ERROR] Negative number: " << price << std::endl;
     return (price);
+}
+
+std::string cleanValue(std::string value)
+{
+    int i = 0;
+    while(value[i])
+    {
+        if (isspace(value[i]))
+            i++;
+        else
+            break;
+    }
+    std::string newValue = value.substr(i);
+    return newValue;
 }
 
 void BitcoinExchange::checkArg(char *av)
@@ -97,7 +113,7 @@ void BitcoinExchange::checkArg(char *av)
         else 
         {
             std::string data = line.substr(0, pipe - 1);
-            std::string value = line.substr(pipe + 1);
+            std::string value = cleanValue(line.substr(pipe + 1));
             if (lastCheck(value) || checkData(data))
                 continue ;
             long newValue = checkValue(value);
